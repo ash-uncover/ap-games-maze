@@ -6,6 +6,8 @@ html, body, #reactroot {
   position: relative;
 
   font-family: 'Roboto', sans-serif;
+
+  user-select: none;
 }
 
 h1, h2 {

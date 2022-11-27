@@ -82,6 +82,13 @@ module.exports = {
         },
       },
       {
+        test: /\.(mp3|flac)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'sound/[name][ext][query]'
+        }
+      },
+      {
         test: /\.(_redirects)$/i,
         type: 'asset/resource',
       },

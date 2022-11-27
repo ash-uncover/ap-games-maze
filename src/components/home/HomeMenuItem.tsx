@@ -1,3 +1,4 @@
+import { playMenuChange } from 'lib/AudioManager'
 import React from 'react'
 
 import './HomeMenuItem.css'
@@ -18,6 +19,7 @@ export const HomeMenuItem = ({
 
   const handleClick = (event) => {
     event.preventDefault()
+    playMenuChange()
     onClick()
     return false
   }
