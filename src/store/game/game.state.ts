@@ -49,8 +49,11 @@ export interface GameBoardTileState {
   id: string
   x: number
   y: number
+  elements: string[]
 }
 
 export interface GameBoardElementState {
-  id: string
+  id: string,
+  x: number,
+  y: number,
 }

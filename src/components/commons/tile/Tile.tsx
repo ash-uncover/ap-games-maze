@@ -1,12 +1,15 @@
 import React from 'react'
+import Element from '../element/Element'
 
 import './Tile.css'
 
 const Tile = ({
   id,
   x,
-  y
+  y,
+  elements
 }) => {
+
   // Rendering //
 
   return (
@@ -14,6 +17,7 @@ const Tile = ({
       <div>{id}</div>
       <div>x: {x}</div>
       <div>y: {y}</div>
+      {elements.map(element => <Element id={element} />)}
     </div>
   )
 }

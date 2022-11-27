@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
-
-import HomeMenu from '../HomeMenu'
-
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import AppSelectors from 'store/app/app.selectors'
+// Libs
+import ShortcutManager, { Shortcuts } from 'lib/ShortcutManager'
+// Components
+import HomeContent from '../HomeContent'
+import HomeMenu from '../HomeMenu'
 import HomeSettingsGeneral from './HomeSettingsGeneral'
 import HomeSettingsVideo from './HomeSettingsVideo'
 import HomeSettingsAudio from './HomeSettingsAudio'
-import HomeContent from '../HomeContent'
-import ShortcutManager, { Shortcuts } from 'lib/ShortcutManager'
+
 
 const HomeSettings = () => {
 

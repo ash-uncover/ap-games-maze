@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react'
-
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
+// Store
+import GameSelectors from 'store/game/game.selectors'
+import { GameStatuses } from 'store/game/game.state'
+// Components
 import Board from 'components/commons/board/Board'
 
 import './Game.css'
-import GameSelectors from 'store/game/game.selectors'
-import { useSelector } from 'react-redux'
-import { GameStatuses } from 'store/game/game.state'
-import { Navigate, useNavigate } from 'react-router-dom'
 
 const Game = ({ }) => {
 
   // Hooks //
 
-  const navigate = useNavigate()
   const status = useSelector(GameSelectors.status)
 
   // Rendering //
@@ -22,6 +22,7 @@ const Game = ({ }) => {
       <Navigate to='/' />
     )
   }
+
   return (
     <div>
       <Board />

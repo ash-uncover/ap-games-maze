@@ -10,6 +10,9 @@ export const boardTiles = (state: RootState) => board(state)?.tiles
 export const tiles = (state: RootState) => base(state).tiles
 export const tile = (tileId: string) => (state: RootState) => tiles(state)[tileId]
 
+export const elements = (state: RootState) => base(state).elements
+export const element = (elementId: string) => (state: RootState) => elements(state)[elementId]
+
 const GameSelectors = {
   status,
   board,
@@ -17,6 +20,9 @@ const GameSelectors = {
 
   tiles,
   tile,
+
+  elements,
+  element,
 }
 
 export default GameSelectors
