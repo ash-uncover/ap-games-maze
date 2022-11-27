@@ -1,0 +1,32 @@
+.menu-step-input {
+  & .container {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+
+    & .slider {
+      height: 2rem;
+      position: relative;
+      flex-grow: 1;
+      max-width: 500px;
+      background: grey;
+      border: 1px solid darkgrey;
+      box-sizing: border-box;
+      cursor: pointer;
+
+      & .value {
+        position: absolute;
+        background: white;
+        height: 100%;
+        transition: width 0.05s;
+      }
+    }
+    & .button {
+      margin: 0 0.25rem;
+      height: 2rem;
+      width: 2rem;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+import ShortcutManager, { Shortcuts } from 'lib/ShortcutManager'
 
 import HomeMenu from './HomeMenu'
 
 import './Home.css'
-import { useNavigate } from 'react-router-dom'
-import ShortcutManager, { Shortcuts } from 'lib/ShortcutManager'
-import { playMenuChange } from 'lib/AudioManager'
 
 const HomeMain = () => {
 

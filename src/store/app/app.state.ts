@@ -13,6 +13,8 @@ interface AppState {
 export interface AppSettings {
   sound: boolean
   soundVolume: number
+  soundGame: boolean
+  soundGameVolume: number
   soundMusic: boolean
   soundMusicVolume: number
   soundInterface: boolean

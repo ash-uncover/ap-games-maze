@@ -1,5 +1,5 @@
-import { playMenuChange } from 'lib/AudioManager'
 import React from 'react'
+import AudioManager, { AudioFiles, AudioTypes } from 'lib/AudioManager'
 
 import './HomeMenuItem.css'
 
@@ -19,7 +19,7 @@ export const HomeMenuItem = ({
 
   const handleClick = (event) => {
     event.preventDefault()
-    playMenuChange()
+    AudioManager.play(AudioFiles.menuChange, AudioTypes.INTERFACE)
     onClick()
     return false
   }

@@ -1,3 +1,4 @@
+import AudioManager, { AudioFiles, AudioTypes } from 'lib/AudioManager'
 import ShortcutManager, { Shortcuts } from 'lib/ShortcutManager'
 import React, { useEffect } from 'react'
 
@@ -8,6 +9,7 @@ const Home = ({ children }) => {
   // Hooks //
 
   useEffect(() => {
+    AudioManager.play(AudioFiles.home, AudioTypes.MUSIC)
     const shortcuts: Shortcuts = {
       id: 'home-shortcuts',
       priority: 1,
@@ -15,6 +17,7 @@ const Home = ({ children }) => {
     }
     ShortcutManager.addShortcuts(shortcuts)
     return () => {
+      AudioManager.stop(AudioFiles.home)
       ShortcutManager.removeShortcuts('home-shortcuts')
     }
   })

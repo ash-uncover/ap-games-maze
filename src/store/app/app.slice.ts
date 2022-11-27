@@ -3,6 +3,7 @@ import {
   createSlice,
   PayloadAction
 } from '@reduxjs/toolkit'
+import { normalizeVolumeValue } from 'lib/AudioManager'
 
 import Language from 'lib/language'
 
@@ -22,6 +23,8 @@ const initialState: AppState = {
   settings: {
     sound: true,
     soundVolume: 100,
+    soundGame: true,
+    soundGameVolume: 100,
     soundMusic: true,
     soundMusicVolume: 100,
     soundInterface: true,
@@ -69,19 +72,25 @@ const setSound: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) 
   state.settings.sound = action.payload
 }
 const setSoundVolume: CaseReducer<AppState, PayloadAction<number>> = (state, action) => {
-  state.settings.soundVolume = action.payload
+  state.settings.soundVolume = normalizeVolumeValue(action.payload)
+}
+const setSoundGame: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) => {
+  state.settings.soundGame = action.payload
+}
+const setSoundGameVolume: CaseReducer<AppState, PayloadAction<number>> = (state, action) => {
+  state.settings.soundGameVolume = normalizeVolumeValue(action.payload)
 }
 const setSoundMusic: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) => {
   state.settings.soundMusic = action.payload
 }
 const setSoundMusicVolume: CaseReducer<AppState, PayloadAction<number>> = (state, action) => {
-  state.settings.soundMusicVolume = action.payload
+  state.settings.soundMusicVolume = normalizeVolumeValue(action.payload)
 }
 const setSoundInterface: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) => {
   state.settings.soundInterface = action.payload
 }
 const setSoundInterfaceVolume: CaseReducer<AppState, PayloadAction<number>> = (state, action) => {
-  state.settings.soundInterfaceVolume = action.payload
+  state.settings.soundInterfaceVolume = normalizeVolumeValue(action.payload)
 }
 
 // SLICE //
@@ -98,6 +107,8 @@ const AppSlice = createSlice({
 
     setSound,
     setSoundVolume,
+    setSoundGame,
+    setSoundGameVolume,
     setSoundMusic,
     setSoundMusicVolume,
     setSoundInterface,
