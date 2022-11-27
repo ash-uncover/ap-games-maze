@@ -1,0 +1,15 @@
+html, body, #reactroot {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+  padding: 0;
+  margin: 0;
+  line-height: 2.5rem;
+}

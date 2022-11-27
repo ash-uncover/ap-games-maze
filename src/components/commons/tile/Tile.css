@@ -1,0 +1,15 @@
+:root {
+  --tile-size: 5rem;
+}
+
+.tile {
+  cursor: pointer;
+  font-size: 0.65rem;
+  display: inline-block;
+  margin: 0.5rem;
+  border: 1px solid green;
+
+  height: var(--tile-size);
+  width: var(--tile-size);
+  overflow: hidden;
+}
