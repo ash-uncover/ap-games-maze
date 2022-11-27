@@ -1,50 +1,49 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import AppSelectors from 'store/app/app.selectors'
-
 import AudioManager from 'lib/AudioManager'
+import AudioSelectors from 'store/audio/audio.selectors'
 
 const Audio = () => {
 
   // Hooks //
 
-  const master = useSelector(AppSelectors.settingsSoundMaster)
+  const master = useSelector(AudioSelectors.master)
   useEffect(() => {
     AudioManager.master = master
   }, [master])
 
-  const masterVolume = useSelector(AppSelectors.settingsSoundMasterVolume)
+  const masterVolume = useSelector(AudioSelectors.masterVolume)
   useEffect(() => {
     AudioManager.masterVolume = masterVolume
   }, [masterVolume])
 
-  const soundGame = useSelector(AppSelectors.settingsSoundGame)
+  const soundGame = useSelector(AudioSelectors.game)
   useEffect(() => {
     AudioManager.game = soundGame
   }, [soundGame])
 
-  const soundGameVolume = useSelector(AppSelectors.settingsSoundGameVolume)
+  const soundGameVolume = useSelector(AudioSelectors.gameVolume)
   useEffect(() => {
     AudioManager.gameVolume = soundGameVolume
   }, [soundGameVolume])
 
-  const soundMusic = useSelector(AppSelectors.settingsSoundMusic)
+  const soundMusic = useSelector(AudioSelectors.music)
   useEffect(() => {
     AudioManager.music = soundMusic
   }, [soundMusic])
 
-  const soundMusicVolume = useSelector(AppSelectors.settingsSoundMusicVolume)
+  const soundMusicVolume = useSelector(AudioSelectors.musicVolume)
   useEffect(() => {
     AudioManager.musicVolume = soundMusicVolume
   }, [soundMusicVolume])
 
-  const soundInterface = useSelector(AppSelectors.settingsSoundInterface)
+  const soundInterface = useSelector(AudioSelectors.interfac)
   useEffect(() => {
     AudioManager.interface = soundInterface
   }, [soundInterface])
 
-  const soundInterfaceVolume = useSelector(AppSelectors.settingsSoundInterfaceVolume)
+  const soundInterfaceVolume = useSelector(AudioSelectors.interfaceVolume)
   useEffect(() => {
     AudioManager.interfaceVolume = soundInterfaceVolume
   }, [soundInterfaceVolume])

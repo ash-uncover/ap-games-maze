@@ -19,17 +19,6 @@ const initialState: AppState = {
 
   dialog: null,
   dialogParams: null,
-
-  settings: {
-    sound: true,
-    soundVolume: 100,
-    soundGame: true,
-    soundGameVolume: 100,
-    soundMusic: true,
-    soundMusicVolume: 100,
-    soundInterface: true,
-    soundInterfaceVolume: 100,
-  }
 }
 
 // REDUCERS //
@@ -68,31 +57,6 @@ const closeDialog: CaseReducer<AppState, PayloadAction<void>> = (state, action) 
   state.dialogParams = null
 }
 
-const setSound: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) => {
-  state.settings.sound = action.payload
-}
-const setSoundVolume: CaseReducer<AppState, PayloadAction<number>> = (state, action) => {
-  state.settings.soundVolume = normalizeVolumeValue(action.payload)
-}
-const setSoundGame: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) => {
-  state.settings.soundGame = action.payload
-}
-const setSoundGameVolume: CaseReducer<AppState, PayloadAction<number>> = (state, action) => {
-  state.settings.soundGameVolume = normalizeVolumeValue(action.payload)
-}
-const setSoundMusic: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) => {
-  state.settings.soundMusic = action.payload
-}
-const setSoundMusicVolume: CaseReducer<AppState, PayloadAction<number>> = (state, action) => {
-  state.settings.soundMusicVolume = normalizeVolumeValue(action.payload)
-}
-const setSoundInterface: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) => {
-  state.settings.soundInterface = action.payload
-}
-const setSoundInterfaceVolume: CaseReducer<AppState, PayloadAction<number>> = (state, action) => {
-  state.settings.soundInterfaceVolume = normalizeVolumeValue(action.payload)
-}
-
 // SLICE //
 
 const AppSlice = createSlice({
@@ -104,15 +68,6 @@ const AppSlice = createSlice({
     setLanguage,
     openDialog,
     closeDialog,
-
-    setSound,
-    setSoundVolume,
-    setSoundGame,
-    setSoundGameVolume,
-    setSoundMusic,
-    setSoundMusicVolume,
-    setSoundInterface,
-    setSoundInterfaceVolume,
   },
 })
 

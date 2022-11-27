@@ -1,10 +1,11 @@
-import { UUID } from '@uncover/js-utils'
-import MenuCheckbox from 'components/commons/menu/MenuCheckbox'
-import { MenuStepInput } from 'components/commons/menu/MenuStepInput'
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import AppSelectors from 'store/app/app.selectors'
-import AppSlice from 'store/app/app.slice'
+// Store
+import AudioSlice from 'store/audio/audio.slice'
+import AudioSelectors from 'store/audio/audio.selectors'
+// Components
+import { MenuStepInput } from 'components/commons/menu/MenuStepInput'
+import MenuCheckbox from 'components/commons/menu/MenuCheckbox'
 
 const HomeSettingsAudio = () => {
 
@@ -12,43 +13,43 @@ const HomeSettingsAudio = () => {
 
   const dispatch = useDispatch()
 
-  const soundMaster = useSelector(AppSelectors.settingsSoundMaster)
-  const soundMasterVolume = useSelector(AppSelectors.settingsSoundMasterVolume)
-  const soundGame = useSelector(AppSelectors.settingsSoundGame)
-  const soundGameVolume = useSelector(AppSelectors.settingsSoundGameVolume)
-  const soundMusic = useSelector(AppSelectors.settingsSoundMusic)
-  const soundMusicVolume = useSelector(AppSelectors.settingsSoundMusicVolume)
-  const soundInterface = useSelector(AppSelectors.settingsSoundInterface)
-  const soundInterfaceVolume = useSelector(AppSelectors.settingsSoundInterfaceVolume)
+  const soundMaster = useSelector(AudioSelectors.master)
+  const soundMasterVolume = useSelector(AudioSelectors.masterVolume)
+  const soundGame = useSelector(AudioSelectors.game)
+  const soundGameVolume = useSelector(AudioSelectors.gameVolume)
+  const soundMusic = useSelector(AudioSelectors.music)
+  const soundMusicVolume = useSelector(AudioSelectors.musicVolume)
+  const soundInterface = useSelector(AudioSelectors.interfac)
+  const soundInterfaceVolume = useSelector(AudioSelectors.interfaceVolume)
 
   // Events //
 
   const handleMasterChange = (event) => {
-    dispatch(AppSlice.actions.setSound(event.target.checked))
+    dispatch(AudioSlice.actions.setMaster(event.target.checked))
   }
   const handleMasterVolumeChange = (value) => {
-    dispatch(AppSlice.actions.setSoundVolume(value))
+    dispatch(AudioSlice.actions.setMasterVolume(value))
   }
 
   const handleGameChange = (event) => {
-    dispatch(AppSlice.actions.setSoundGame(event.target.checked))
+    dispatch(AudioSlice.actions.setGame(event.target.checked))
   }
   const handleGameVolumeChange = (value) => {
-    dispatch(AppSlice.actions.setSoundGameVolume(value))
+    dispatch(AudioSlice.actions.setGameVolume(value))
   }
 
   const handleInterfaceChange = (event) => {
-    dispatch(AppSlice.actions.setSoundInterface(event.target.checked))
+    dispatch(AudioSlice.actions.setInterface(event.target.checked))
   }
   const handleInterfaceVolumeChange = (value) => {
-    dispatch(AppSlice.actions.setSoundInterfaceVolume(value))
+    dispatch(AudioSlice.actions.setInterfaceVolume(value))
   }
 
   const handleMusicChange = (event) => {
-    dispatch(AppSlice.actions.setSoundMusic(event.target.checked))
+    dispatch(AudioSlice.actions.setMusic(event.target.checked))
   }
   const handleMusicVolumeChange = (value) => {
-    dispatch(AppSlice.actions.setSoundMusicVolume(value))
+    dispatch(AudioSlice.actions.setMusicVolume(value))
   }
 
   // Rendering //

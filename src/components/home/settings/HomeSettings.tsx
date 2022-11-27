@@ -17,7 +17,6 @@ const HomeSettings = () => {
 
   const [page, setPage] = useState('general')
   const navigate = useNavigate()
-  const settings = useSelector(AppSelectors.settings)
 
   useEffect(() => {
     const shortcuts: Shortcuts = {
