@@ -5,6 +5,8 @@ import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 import BoardTile from './BoardTile'
 
+import './Board.css'
+
 const Board = ({
 
 }) => {
@@ -14,16 +16,17 @@ const Board = ({
   const dispatch = useDispatch()
 
   const tiles = useSelector(GameSelectors.boardTiles)
+  const elements = useSelector(GameSelectors.boardElements)
 
   useEffect(() => {
     const shortcuts: Shortcuts = {
       id: 'board-shortcuts',
       priority: 2,
       shortcuts: [
-        { code: 'ArrowUp', callback: handleMoveUp },
-        { code: 'ArrowLeft', callback: handleMoveLeft },
-        { code: 'ArrowDown', callback: handleMoveDown },
-        { code: 'ArrowRight', callback: handleMoveRight },
+        { down: true, code: 'ArrowUp', callback: handleMoveUp },
+        { down: true, code: 'ArrowLeft', callback: handleMoveLeft },
+        { down: true, code: 'ArrowDown', callback: handleMoveDown },
+        { down: true, code: 'ArrowRight', callback: handleMoveRight },
       ]
     }
     ShortcutManager.addShortcuts(shortcuts)
@@ -35,16 +38,16 @@ const Board = ({
   // Events //
 
   const handleMoveUp = () => {
-    dispatch(GameSlice.actions.moveUp())
+    dispatch(GameSlice.actions.moveUp({ elementId: elements[0] }))
   }
   const handleMoveLeft = () => {
-    dispatch(GameSlice.actions.moveLeft())
+    dispatch(GameSlice.actions.moveLeft({ elementId: elements[0] }))
   }
   const handleMoveDown = () => {
-    dispatch(GameSlice.actions.moveDown())
+    dispatch(GameSlice.actions.moveDown({ elementId: elements[0] }))
   }
   const handleMoveRight = () => {
-    dispatch(GameSlice.actions.moveRight())
+    dispatch(GameSlice.actions.moveRight({ elementId: elements[0] }))
   }
 
   // Rendering //

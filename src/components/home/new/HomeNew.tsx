@@ -32,7 +32,7 @@ const HomeNew = () => {
   // Events //
 
   const handleStart = () => {
-    dispatch(GameSlice.actions.startGame({ width: 5, height: 7 }))
+    dispatch(GameSlice.actions.startGame({ width: 25, height: 25 }))
     navigate('/game')
   }
 

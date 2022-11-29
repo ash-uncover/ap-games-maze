@@ -1,12 +1,20 @@
 import { ArrayUtils } from "@uncover/js-utils"
 
-let SHORTCUTS = {}
+let SHORTCUTS_DOWN = {}
+let SHORTCUTS_UP = {}
 let SHORTCUTS_SETS: Shortcuts[] = []
 
-document.addEventListener('keyup', (event) => {
-  console.log(event)
+document.addEventListener('keydown', (event) => {
   const shortcutId = getShortcutId(event)
-  const shortcut = SHORTCUTS[shortcutId]
+  const shortcut = SHORTCUTS_DOWN[shortcutId]
+  if (shortcut) {
+    shortcut.callback()
+  }
+})
+
+document.addEventListener('keyup', (event) => {
+  const shortcutId = getShortcutId(event)
+  const shortcut = SHORTCUTS_UP[shortcutId]
   if (shortcut) {
     shortcut.callback()
   }
@@ -26,6 +34,7 @@ export interface ShortcutId {
 }
 
 export interface Shortcut extends ShortcutId {
+  down?: boolean
   priority?: number
   callback: () => void
 }
@@ -34,17 +43,30 @@ export const getShortcutId = (shortcut: ShortcutId) => {
   return `${shortcut.code}-${Boolean(shortcut.altKey)}-${Boolean(shortcut.ctrlKey)}-${Boolean(shortcut.shiftKey)}`
 }
 export const updateShortcuts = () => {
-  SHORTCUTS = SHORTCUTS_SETS.reduce((acc, shortcutSet) => {
+  SHORTCUTS_DOWN = SHORTCUTS_SETS.reduce((acc, shortcutSet) => {
     shortcutSet.shortcuts.forEach((shortcut) => {
-      const shortcutId = getShortcutId(shortcut)
-      const currentShortcut = acc[shortcutId]
-      if (!currentShortcut || currentShortcut.priority < shortcutSet.priority) {
-        acc[shortcutId] = shortcut
+      if (shortcut.down) {
+        const shortcutId = getShortcutId(shortcut)
+        const currentShortcut = acc[shortcutId]
+        if (!currentShortcut || currentShortcut.priority < shortcutSet.priority) {
+          acc[shortcutId] = shortcut
+        }
       }
     })
     return acc
   }, {})
-  console.log(SHORTCUTS)
+  SHORTCUTS_UP = SHORTCUTS_SETS.reduce((acc, shortcutSet) => {
+    shortcutSet.shortcuts.forEach((shortcut) => {
+      if (!shortcut.down) {
+        const shortcutId = getShortcutId(shortcut)
+        const currentShortcut = acc[shortcutId]
+        if (!currentShortcut || currentShortcut.priority < shortcutSet.priority) {
+          acc[shortcutId] = shortcut
+        }
+      }
+    })
+    return acc
+  }, {})
 }
 
 const ShortcutManager = {
@@ -57,12 +79,12 @@ const ShortcutManager = {
     const set = SHORTCUTS_SETS.find(set => set.id === id)
     SHORTCUTS_SETS = ArrayUtils.removeElement(SHORTCUTS_SETS, set)
     if (update !== false) {
-      console.log('update after ' + id)
       updateShortcuts()
     }
   },
   reset: () => {
-    SHORTCUTS = {}
+    SHORTCUTS_DOWN = {}
+    SHORTCUTS_UP = {}
     SHORTCUTS_SETS.length = 0
   }
 }

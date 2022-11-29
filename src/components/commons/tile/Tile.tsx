@@ -17,7 +17,7 @@ const Tile = ({
       <div>{id}</div>
       <div>x: {x}</div>
       <div>y: {y}</div>
-      {elements.map(element => <Element id={element} />)}
+      {elements.map(element => <Element key={element} id={element} />)}
     </div>
   )
 }

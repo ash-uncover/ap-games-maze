@@ -1,0 +1,10 @@
+.board {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  & .board-tiles {
+    & .board-tiles-row {
+      display: flex;
+    }
+  }
+}

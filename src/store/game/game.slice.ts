@@ -8,6 +8,8 @@ import {
   UUID
 } from '@uncover/js-utils'
 
+import * as BoardHelper from 'lib/BoardHelper'
+
 import {
   GameState,
   GameBoardState,
@@ -45,9 +47,9 @@ const startGame: CaseReducer<GameState, PayloadAction<StartGamePayload>> = (stat
   const elementList: string[] = []
   const elements: GameBoardElementsState = {}
 
-  for (let y = 0 ; y < height ; y++) {
+  for (let y = 0; y < height; y++) {
     const tileRow: string[] = []
-    for (let x = 0 ; x < width ; x++) {
+    for (let x = 0; x < width; x++) {
       const tile: GameBoardTileState = {
         id: `tile-${UUID.next()}`,
         x,
@@ -79,29 +81,36 @@ const startGame: CaseReducer<GameState, PayloadAction<StartGamePayload>> = (stat
   state.elements = elements
 }
 
-const moveUp: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  const element = state.elements[state.board.elements[0]]
-  state.tiles[state.board.tiles[element.y][element.x]].elements = []
-  state.tiles[state.board.tiles[element.y - 1][element.x]].elements = [element.id]
-  element.y--
+interface movePayload {
+  elementId: string
 }
-const moveLeft: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  const element = state.elements[state.board.elements[0]]
-  state.tiles[state.board.tiles[element.y][element.x]].elements = []
-  state.tiles[state.board.tiles[element.y][element.x - 1]].elements = [element.id]
-  element.x--
+const moveUp: CaseReducer<GameState, PayloadAction<movePayload>> = (state, action) => {
+  const { elementId } = action.payload
+  const element = BoardHelper.getElement(state, elementId)
+  BoardHelper.moveElement(state, elementId, { ...element, y: element.y - 1 })
 }
-const moveDown: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  const element = state.elements[state.board.elements[0]]
-  state.tiles[state.board.tiles[element.y][element.x]].elements = []
-  state.tiles[state.board.tiles[element.y + 1][element.x]].elements = [element.id]
-  element.y++
+const moveLeft: CaseReducer<GameState, PayloadAction<movePayload>> = (state, action) => {
+  const { elementId } = action.payload
+  const element = BoardHelper.getElement(state, elementId)
+  BoardHelper.moveElement(state, elementId, { ...element, x: element.x - 1 })
 }
-const moveRight: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
-  const element = state.elements[state.board.elements[0]]
-  state.tiles[state.board.tiles[element.y][element.x]].elements = []
-  state.tiles[state.board.tiles[element.y][element.x + 1]].elements = [element.id]
-  element.x++
+const moveDown: CaseReducer<GameState, PayloadAction<movePayload>> = (state, action) => {
+  const { elementId } = action.payload
+  const element = BoardHelper.getElement(state, elementId)
+  BoardHelper.moveElement(state, elementId, { ...element, y: element.y + 1 })
+}
+const moveRight: CaseReducer<GameState, PayloadAction<movePayload>> = (state, action) => {
+  const { elementId } = action.payload
+  const element = BoardHelper.getElement(state, elementId)
+  BoardHelper.moveElement(state, elementId, { ...element, x: element.x + 1 })
+}
+interface moveToPayload extends movePayload {
+  x: number
+  y: number
+}
+const move: CaseReducer<GameState, PayloadAction<moveToPayload>> = (state, action) => {
+  const { elementId, x, y } = action.payload
+  BoardHelper.moveElement(state, elementId, { x, y })
 }
 
 // SLICE //
@@ -113,6 +122,7 @@ const GameSlice = createSlice({
   reducers: {
     startGame,
 
+    move,
     moveUp,
     moveLeft,
     moveDown,

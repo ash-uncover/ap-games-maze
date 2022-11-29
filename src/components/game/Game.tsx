@@ -24,7 +24,7 @@ const Game = ({ }) => {
   }
 
   return (
-    <div>
+    <div className='game'>
       <Board />
     </div>
   )

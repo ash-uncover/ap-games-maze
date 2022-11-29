@@ -12,4 +12,5 @@
   height: var(--tile-size);
   width: var(--tile-size);
   overflow: hidden;
+  flex-shrink: 0;
 }
