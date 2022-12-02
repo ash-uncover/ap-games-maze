@@ -2,7 +2,7 @@ import Logger from '@uncover/js-utils-logger'
 const LOGGER = new Logger('CONFIG')
 
 // Default hard-coded values
-const CONFIG = {
+const CONFIG: { [key: string]: string } = {
   AP_GAMES_MAZE_PUBLIC: ''
 }
 
@@ -15,5 +15,10 @@ try {
 } catch (error) {
   LOGGER.warn('Failed to load from process.env')
 }
+
+console.log('CONFIG')
+Object.keys(CONFIG).forEach((confKey) => {
+  console.log(` - ${confKey}: '${CONFIG[confKey]}'`)
+})
 
 export default CONFIG
