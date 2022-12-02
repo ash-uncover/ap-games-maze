@@ -14,7 +14,8 @@ export const AudioTypes: {
 
 export const AudioFiles = {
   home: '/sound/home.flac',
-  menuChange: '/sound/menu_change_2.mp3'
+  menuChange: '/sound/menu_change_2.mp3',
+  step: '/sound/step.mp3',
 }
 
 export const normalizeVolumeValue = (value: number) => {
