@@ -1,4 +1,5 @@
 import { ArrayUtils } from "@uncover/js-utils"
+import CONFIG from "config"
 
 export type AudioType = 'music' | 'interface' | 'game'
 
@@ -157,7 +158,7 @@ class AudioManager {
 
   stop(path: string) {
     if (!this.#audios[path]) {
-      this.#audios[path] = new Audio(path)
+      this.#audios[path] = new Audio(`${CONFIG.AP_GAMES_MAZE_PUBLIC}${path}`)
       this.#audios[path].addEventListener('ended', () => this.stop(path))
     }
     const playing = this.#playing.find(play => play.path === path)
