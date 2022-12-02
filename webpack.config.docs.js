@@ -32,7 +32,7 @@ module.exports = {
       ],
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './src/index_docs.html',
       title: 'AP Maze',
       publicPath: '/ap-games-maze'
     }),
