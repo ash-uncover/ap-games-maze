@@ -1,3 +1,4 @@
+import CONFIG from 'config'
 import {
   Maps,
   Terrains,
@@ -22,7 +23,7 @@ const load = async (url: string) => {
 }
 
 export const loadMapsData = async () => {
-  const maps = await load('/data/maps.json')
+  const maps = await load(`${CONFIG.AP_GAMES_MAZE_PUBLIC}/data/maps.json`)
   maps.maps.forEach((map: Map) => {
     // Check map
     const height = map.terrains.length
@@ -41,7 +42,7 @@ export const loadMapsData = async () => {
 }
 
 export const loadTerrainsData = async () => {
-  const terrains = await load('/data/terrains.json')
+  const terrains = await load(`${CONFIG.AP_GAMES_MAZE_PUBLIC}/data/terrains.json`)
   terrains.terrains.forEach((terrain: Terrain) => {
     Terrains[terrain.id] = terrain
   })

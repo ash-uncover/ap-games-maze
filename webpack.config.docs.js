@@ -1,5 +1,6 @@
 /* eslint-disable */
 
+const webpack = require('webpack')
 const path = require('path')
 
 const DIR_DOCS = path.resolve(__dirname, 'docs')
@@ -30,6 +31,9 @@ module.exports = {
         { from: path.resolve(__dirname, '_redirects'), to: '.' },
         { from: path.resolve(__dirname, 'public'), to: '.' },
       ],
+    }),
+    new webpack.EnvironmentPlugin({
+      AP_GAMES_MAZE_PUBLIC: '/ap-games-maze'
     }),
     new HtmlWebpackPlugin({
       template: './src/index_docs.html',
