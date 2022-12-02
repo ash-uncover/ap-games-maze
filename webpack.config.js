@@ -27,7 +27,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      title: 'Wait App',
+      title: 'AP Maze',
     }),
     new CopyPlugin({
       patterns: [
@@ -70,7 +70,17 @@ module.exports = {
         test: /\.css$/i,
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader' },
+          { loader: 'css-loader', options: {
+            url: {
+              filter: (url, resourcePath) => {
+                // Don't handle `images` urls
+                if (url.includes('images/')) {
+                  return false;
+                }
+                return true;
+              },
+            },
+          } },
           { loader: 'postcss-loader' },
         ],
       },

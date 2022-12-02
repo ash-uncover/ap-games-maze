@@ -1,8 +1,10 @@
 .board {
   height: 100%;
   width: 100%;
-  overflow: auto;
+  display: flex;
+
   & .board-tiles {
+    margin: auto;
     & .board-tiles-row {
       display: flex;
     }

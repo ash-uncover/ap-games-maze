@@ -12,7 +12,7 @@ const Element = ({
 
   useEffect(() => {
     if (element && element.current) {
-      element.current.scrollIntoView({block: 'center', inline: 'center'})
+      element.current.scrollIntoView({ block: 'center', inline: 'center' })
     }
   })
 
@@ -20,9 +20,17 @@ const Element = ({
 
   return (
     <div
-    ref={element}
-    className='element'
+      ref={element}
+      className='element'
     >
+      <img
+        width='100%'
+        height='100%'
+        src='/images/char.png'
+        style={{
+          objectFit: 'contain'
+        }}
+      />
     </div>
   )
 }

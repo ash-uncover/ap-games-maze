@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-import ShortcutManager, { Shortcuts } from 'lib/ShortcutManager'
-
+// Libs
+import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
+// Components
 import HomeMenu from './HomeMenu'
 
 import './Home.css'

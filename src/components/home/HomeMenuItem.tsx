@@ -1,5 +1,5 @@
 import React from 'react'
-import AudioManager, { AudioFiles, AudioTypes } from 'lib/AudioManager'
+import AudioManager, { AudioFiles, AudioTypes } from 'lib/utils/AudioManager'
 
 import './HomeMenuItem.css'
 

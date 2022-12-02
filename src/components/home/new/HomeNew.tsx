@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-
+// Store
 import GameSlice from 'store/game/game.slice'
-
+// Libs
+import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
+// Components
 import HomeMenu from '../HomeMenu'
-import ShortcutManager, { Shortcuts } from 'lib/ShortcutManager'
 
 const HomeNew = () => {
 
@@ -13,6 +14,8 @@ const HomeNew = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const [map, setMap] = useState('medium')
 
   useEffect(() => {
     const shortcuts: Shortcuts = {
@@ -32,7 +35,10 @@ const HomeNew = () => {
   // Events //
 
   const handleStart = () => {
-    dispatch(GameSlice.actions.startGame({ width: 25, height: 25 }))
+    dispatch(GameSlice.actions.startGame({
+      mapId: map,
+      nbPlayers: 1
+    }))
     navigate('/game')
   }
 

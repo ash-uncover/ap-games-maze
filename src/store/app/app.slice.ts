@@ -3,9 +3,9 @@ import {
   createSlice,
   PayloadAction
 } from '@reduxjs/toolkit'
-import { normalizeVolumeValue } from 'lib/AudioManager'
+import { normalizeVolumeValue } from 'lib/utils/AudioManager'
 
-import Language from 'lib/language'
+import Language from 'lib/utils/language'
 
 import AppState from 'store/app/app.state'
 
@@ -15,10 +15,12 @@ const initialState: AppState = {
   busy: false,
   busyMessage: '',
 
-  language: Language.DEFAULT.id,
-
   dialog: null,
   dialogParams: null,
+
+  language: Language.DEFAULT.id,
+
+  loaded: false,
 }
 
 // REDUCERS //
@@ -38,6 +40,10 @@ const setBusy: CaseReducer<AppState, PayloadAction<PayloadBusy>> = (state, actio
 
 const setLanguage: CaseReducer<AppState, PayloadAction<string>> = (state, action) => {
   state.language = action.payload
+}
+
+const setLoaded: CaseReducer<AppState, PayloadAction<boolean>> = (state, action) => {
+  state.loaded = action.payload
 }
 
 type PayloadDialog = {
@@ -66,6 +72,7 @@ const AppSlice = createSlice({
   reducers: {
     setBusy,
     setLanguage,
+    setLoaded,
     openDialog,
     closeDialog,
   },

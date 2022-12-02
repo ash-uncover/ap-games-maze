@@ -4,10 +4,11 @@ interface AppState {
   busy: boolean
   busyMessage: string
 
-  language: string
-
   dialog: string | null
   dialogParams: any | null
+
+  language: string
+  loaded: boolean
 }
 
 export default AppState

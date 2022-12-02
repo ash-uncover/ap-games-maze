@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import GameSelectors from 'store/game/game.selectors'
 
-import Tile from '../tile/Tile'
+import Tile from './tile/Tile'
 
 const BoardTile = ({
   tileId

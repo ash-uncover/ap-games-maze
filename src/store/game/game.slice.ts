@@ -4,81 +4,71 @@ import {
   PayloadAction
 } from '@reduxjs/toolkit'
 
-import {
-  UUID
-} from '@uncover/js-utils'
+import * as BoardHelper from 'lib/game/board/board.helper'
+import * as ElementHelper from 'lib/game/board/elements/element.helper'
+import * as TileHelper from 'lib/game/board/tiles/tile.helper'
+import * as PlayerHelper from 'lib/game/players/player.helper'
 
-import * as BoardHelper from 'lib/BoardHelper'
+import { Maps, Terrains } from 'lib/data/Data'
+import { shuffleMap } from 'lib/data/MapHelper'
 
 import {
   GameState,
   GameBoardState,
   GameBoardTilesState,
-  GameBoardTileState,
   GameStatuses,
-  GameBoardElementState,
-  GameBoardElementsState
+  GameBoardElementsState,
 } from 'store/game/game.state'
+import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 
 // STATE //
 
 const initialState: GameState = {
   status: GameStatuses.GAME_NOT_STARTED,
-  board: null,
+  board: {
+    tiles: [],
+    elements: []
+  },
   tiles: {},
-  elements: {}
+  elements: {},
+  players: {},
 }
 
 // REDUCERS //
 
 interface StartGamePayload {
-  width: number
-  height: number
+  mapId: string
+  nbPlayers: number
 }
 const startGame: CaseReducer<GameState, PayloadAction<StartGamePayload>> = (state, action) => {
   const {
-    width,
-    height,
+    mapId,
+    nbPlayers
   } = action.payload
 
-  const tileList: string[][] = []
-  const tiles: GameBoardTilesState = {}
+  const map = Maps[mapId]
+  const tileEntries = []
 
-  const elementList: string[] = []
-  const elements: GameBoardElementsState = {}
-
-  for (let y = 0; y < height; y++) {
-    const tileRow: string[] = []
-    for (let x = 0; x < width; x++) {
-      const tile: GameBoardTileState = {
-        id: `tile-${UUID.next()}`,
-        x,
-        y,
-        elements: []
+  // Build Tiles
+  shuffleMap(map)
+  state.board.tiles = new Array(map.height).fill(null).map(e => new Array(map.width).fill(null))
+  for (let y = 0; y < map.height; y++) {
+    const mapRow = map.terrains[y]
+    for (let x = 0; x < map.width; x++) {
+      const terrain = mapRow[x]
+      const tile = TileHelper.createTile(state, terrain, { x, y })
+      if (terrain === '>') {
+        tileEntries.push(tile)
       }
-      tiles[tile.id] = tile
-      tileRow.push(tile.id)
     }
-    tileList.push(tileRow)
   }
 
-  const element: GameBoardElementState = {
-    id: `element-${UUID.next()}`,
-    x: 2,
-    y: 2,
-  }
-  elements[element.id] = element
-  elementList.push(element.id)
-  tiles[tileList[2][2]].elements.push(element.id)
+  // Set Players
+  const player = PlayerHelper.createPlayer(state)
+  const character = ElementHelper.createCharacter(state, player.id)
+  BoardHelper.placeElement(state, character.id, tileEntries[0])
 
-  const board: GameBoardState = {
-    elements: elementList,
-    tiles: tileList,
-  }
   state.status = GameStatuses.PLAYER_SELECTION
-  state.board = board
-  state.tiles = tiles
-  state.elements = elements
 }
 
 interface movePayload {
@@ -113,6 +103,10 @@ const move: CaseReducer<GameState, PayloadAction<moveToPayload>> = (state, actio
   BoardHelper.moveElement(state, elementId, { x, y })
 }
 
+const endGame: CaseReducer<GameState, PayloadAction<void>> = (state, action) => {
+  Object.assign(state, initialState)
+}
+
 // SLICE //
 
 const GameSlice = createSlice({
@@ -127,6 +121,8 @@ const GameSlice = createSlice({
     moveLeft,
     moveDown,
     moveRight,
+
+    endGame,
   },
 })
 

@@ -15,7 +15,7 @@
     right: 0;
 
     &.layer-background {
-      background: url('assets/images/background_main.jpg');
+      background: url('images/background.jpg');
       background-size: cover;
     }
 

@@ -6,8 +6,7 @@
   cursor: pointer;
   font-size: 0.65rem;
   display: inline-block;
-  margin: 0.5rem;
-  border: 1px solid green;
+  border: 1px solid #444;
 
   height: var(--tile-size);
   width: var(--tile-size);

@@ -1,11 +1,15 @@
-import ShortcutManager, { Shortcuts } from 'lib/ShortcutManager'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+// Store
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
-import BoardTile from './BoardTile'
+// Libs
+import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
+// Components
+import BoardTile from 'components/game/board/BoardTile'
 
 import './Board.css'
+import { GameStatuses } from 'store/game/game.state'
 
 const Board = ({
 
@@ -15,25 +19,32 @@ const Board = ({
 
   const dispatch = useDispatch()
 
+  const status = useSelector(GameSelectors.status)
   const tiles = useSelector(GameSelectors.boardTiles)
   const elements = useSelector(GameSelectors.boardElements)
 
   useEffect(() => {
-    const shortcuts: Shortcuts = {
-      id: 'board-shortcuts',
-      priority: 2,
-      shortcuts: [
-        { down: true, code: 'ArrowUp', callback: handleMoveUp },
-        { down: true, code: 'ArrowLeft', callback: handleMoveLeft },
-        { down: true, code: 'ArrowDown', callback: handleMoveDown },
-        { down: true, code: 'ArrowRight', callback: handleMoveRight },
-      ]
+    if (
+      status !== GameStatuses.GAME_NOT_STARTED &&
+      status !== GameStatuses.GAME_ENDED_DEFEAT &&
+      status !== GameStatuses.GAME_ENDED_VICTORY
+    ) {
+      const shortcuts: Shortcuts = {
+        id: 'board-shortcuts',
+        priority: 2,
+        shortcuts: [
+          { down: true, code: 'ArrowUp', callback: handleMoveUp },
+          { down: true, code: 'ArrowLeft', callback: handleMoveLeft },
+          { down: true, code: 'ArrowDown', callback: handleMoveDown },
+          { down: true, code: 'ArrowRight', callback: handleMoveRight },
+        ]
+      }
+      ShortcutManager.addShortcuts(shortcuts)
     }
-    ShortcutManager.addShortcuts(shortcuts)
     return () => {
       ShortcutManager.removeShortcuts('board-shortcuts')
     }
-  })
+  }, [status])
 
   // Events //
 

@@ -1,19 +1,36 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 // Store
 import GameSelectors from 'store/game/game.selectors'
 import { GameStatuses } from 'store/game/game.state'
+// Libs
+import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
 // Components
-import Board from 'components/commons/board/Board'
+import Board from 'components/game/board/Board'
 
 import './Game.css'
+import GameSlice from 'store/game/game.slice'
 
 const Game = ({ }) => {
 
   // Hooks //
 
+  const dispatch = useDispatch()
+
+  const [showInventory, setShowInventory] = useState(false)
+
   const status = useSelector(GameSelectors.status)
+
+  // Events //
+
+  const toggleInventory = () => {
+    setShowInventory(!showInventory)
+  }
+
+  const handleEndGame = () => {
+    dispatch(GameSlice.actions.endGame())
+  }
 
   // Rendering //
 
@@ -25,7 +42,30 @@ const Game = ({ }) => {
 
   return (
     <div className='game'>
-      <Board />
+      <div className='game-header'>
+        {`Steps: `}
+      </div>
+      <div
+        className='game-area'
+        style={{ position: 'relative' }}
+      >
+        <Board />
+      </div>
+      <div className='game-footer'>
+        footer
+      </div>
+      {status === GameStatuses.GAME_ENDED_VICTORY ?
+        <div className='game-layer'>
+          <div className='game-dialog'>
+            VICTORY
+            <button
+              onClick={handleEndGame}
+            >
+              Return to Main Menu
+            </button>
+          </div>
+        </div>
+        : null}
     </div>
   )
 }

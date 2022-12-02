@@ -6,7 +6,7 @@ import {
 } from 'react-redux'
 
 // Import translation module
-import 'lib/i18n'
+import 'lib/utils/i18n'
 
 // Should be imported before first access to the reducers
 import store from 'store'
@@ -14,8 +14,7 @@ import store from 'store'
 // Import components
 import Root from 'routes/__layout'
 
-import ShortcutManager from 'lib/ShortcutManager'
-
+import ShortcutManager from 'lib/utils/ShortcutManager'
 ShortcutManager.reset()
 
 const containerRoot = document.getElementById('reactroot')

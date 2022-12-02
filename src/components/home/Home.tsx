@@ -1,6 +1,7 @@
-import AudioManager, { AudioFiles, AudioTypes } from 'lib/AudioManager'
-import ShortcutManager, { Shortcuts } from 'lib/ShortcutManager'
 import React, { useEffect } from 'react'
+// Libs
+import AudioManager, { AudioFiles, AudioTypes } from 'lib/utils/AudioManager'
+import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
 
 import './Home.css'
 
