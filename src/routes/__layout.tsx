@@ -1,7 +1,6 @@
 import React from 'react'
 
 import {
-  BrowserRouter as Router,
   Route,
   Routes,
   useLocation,
@@ -23,19 +22,17 @@ const Root = () => {
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path='/' element={<RouteRoot />}>
-            <Route path='' element={<RouteHome />}>
-              <Route path='' element={<HomeMain />} />
-              <Route path='new' element={<RouteHomeNew />} />
-              <Route path='settings' element={<RouteHomeSettings />} />
-            </Route>
-            <Route path='game' element={<RouteGame />} />
-            <Route path='*' element={<RouteNotFound />} />
+      <Routes>
+        <Route path='/' element={<RouteRoot />}>
+          <Route path='' element={<RouteHome />}>
+            <Route path='' element={<HomeMain />} />
+            <Route path='new' element={<RouteHomeNew />} />
+            <Route path='settings' element={<RouteHomeSettings />} />
           </Route>
-        </Routes>
-      </Router>
+          <Route path='game' element={<RouteGame />} />
+          <Route path='*' element={<RouteNotFound />} />
+        </Route>
+      </Routes>
       <Audio />
     </>
   )

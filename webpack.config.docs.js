@@ -11,7 +11,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: path.resolve(DIR_SRC, 'index.tsx'),
+  entry: path.resolve(DIR_SRC, 'index_docs.tsx'),
 
   output: {
     clean: true,
