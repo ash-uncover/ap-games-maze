@@ -22,7 +22,7 @@ const store = (state: AudioState) => {
 }
 
 const load = () => {
-  JSON.parse(localStorage.getItem(ALPHA_AUDIO) || '{}')
+  return JSON.parse(localStorage.getItem(ALPHA_AUDIO) || '{}')
 }
 
 const storedState = USE_LOCAL_STORAGE ? load() : {}

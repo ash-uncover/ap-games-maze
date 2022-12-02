@@ -1,1 +1,1 @@
-# ap-world
+# ap-games-maze

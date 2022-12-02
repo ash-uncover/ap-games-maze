@@ -1,5 +1,5 @@
 {
-  "name": "ap-world",
+  "name": "ap-games-maze",
   "version": "0.0.1",
   "scripts": {
     "build": "webpack",

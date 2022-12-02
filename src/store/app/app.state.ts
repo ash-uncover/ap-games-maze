@@ -1,5 +1,3 @@
-import { AudioState } from '../audio/audio.state'
-
 interface AppState {
   busy: boolean
   busyMessage: string
@@ -8,7 +6,9 @@ interface AppState {
   dialogParams: any | null
 
   language: string
+
   loaded: boolean
+  started: boolean
 }
 
 export default AppState

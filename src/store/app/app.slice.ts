@@ -21,9 +21,14 @@ const initialState: AppState = {
   language: Language.DEFAULT.id,
 
   loaded: false,
+  started: false,
 }
 
 // REDUCERS //
+
+const startApp: CaseReducer<AppState, PayloadAction<PayloadBusy>> = (state, action) => {
+  state.started = true
+}
 
 type PayloadBusy = {
   busy: boolean,
@@ -70,6 +75,7 @@ const AppSlice = createSlice({
   initialState,
 
   reducers: {
+    startApp,
     setBusy,
     setLanguage,
     setLoaded,

@@ -16,17 +16,19 @@ const Home = ({
 
   useEffect(() => {
     AudioManager.play(AudioFiles.home, AudioTypes.MUSIC)
+    return () => {
+      AudioManager.stop(AudioFiles.home)
+    }
+  }, [])
+
+  useEffect(() => {
     const shortcuts: Shortcuts = {
       id: 'home-shortcuts',
       priority: 1,
       shortcuts: []
     }
     ShortcutManager.addShortcuts(shortcuts)
-    return () => {
-      AudioManager.stop(AudioFiles.home)
-      ShortcutManager.removeShortcuts('home-shortcuts')
-    }
-  })
+  }, [])
 
   // Rendering //
 

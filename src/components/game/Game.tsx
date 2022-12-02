@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 import GameSelectors from 'store/game/game.selectors'
 import { GameStatuses } from 'store/game/game.state'
 // Libs
-import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
+import AudioManager, { AudioFiles, AudioTypes } from 'lib/utils/AudioManager'
 // Components
 import Board from 'components/game/board/Board'
 
@@ -18,15 +18,16 @@ const Game = ({ }) => {
 
   const dispatch = useDispatch()
 
-  const [showInventory, setShowInventory] = useState(false)
-
   const status = useSelector(GameSelectors.status)
 
-  // Events //
+  useEffect(() => {
+    AudioManager.play(AudioFiles.game, AudioTypes.MUSIC)
+    return () => {
+      AudioManager.stop(AudioFiles.game)
+    }
+  }, [])
 
-  const toggleInventory = () => {
-    setShowInventory(!showInventory)
-  }
+  // Events //
 
   const handleEndGame = () => {
     dispatch(GameSlice.actions.endGame())

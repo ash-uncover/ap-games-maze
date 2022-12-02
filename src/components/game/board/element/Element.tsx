@@ -1,3 +1,4 @@
+import CONFIG from 'config'
 import React, { useEffect, useRef } from 'react'
 
 import './Element.css'
@@ -30,7 +31,7 @@ const Element = ({
       <img
         width='100%'
         height='100%'
-        src='/images/char.png'
+        src={`${CONFIG.AP_GAMES_MAZE_PUBLIC}/images/char.png`}
         style={{
           objectFit: 'contain'
         }}

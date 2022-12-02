@@ -8,6 +8,7 @@ export const dialog = (state: RootState) => base(state).dialog
 export const dialogParams = (state: RootState) => base(state).dialogParams
 export const language = (state: RootState) => base(state).language
 export const loaded = (state: RootState) => base(state).loaded
+export const started = (state: RootState) => base(state).started
 
 const AppSelectors = {
   busy,
@@ -16,6 +17,7 @@ const AppSelectors = {
   dialogParams,
   language,
   loaded,
+  started,
 }
 
 export default AppSelectors

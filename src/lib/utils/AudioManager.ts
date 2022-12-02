@@ -13,8 +13,9 @@ export const AudioTypes: {
 }
 
 export const AudioFiles = {
-  home: '/sound/home.flac',
-  menuChange: '/sound/menu_change_2.mp3',
+  home: '/sound/home.mp3',
+  game: '/sound/game.mp3',
+  menuChange: '/sound/menu_change.mp3',
   step: '/sound/step.mp3',
 }
 
@@ -142,11 +143,16 @@ class AudioManager {
         break
       }
     }
-    this.#playing.push({
-      path,
-      type
-    })
-    this.#audios[path].play()
+    try {
+      this.#audios[path].play()
+      this.#playing.push({
+        path,
+        type
+      })
+    } catch (error) {
+      return false
+    }
+    return true
   }
 
   stop(path: string) {
