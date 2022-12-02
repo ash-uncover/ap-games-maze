@@ -2,6 +2,15 @@ import React, { ChangeEvent, MouseEvent, useEffect, useState } from 'react'
 
 import './MenuStepInput.css'
 
+interface MenuStepInputProperties {
+  label: string
+  min: number
+  max: number
+  value: number
+
+  onChange: (arg: number) => void
+}
+
 export const MenuStepInput = ({
   label,
   min,
@@ -9,7 +18,7 @@ export const MenuStepInput = ({
   value,
 
   onChange,
-}) => {
+}: MenuStepInputProperties) => {
 
   // Hooks //
 

@@ -14,11 +14,17 @@ const ALPHA_AUDIO = 'alpha-audio'
 const USE_LOCAL_STORAGE = true
 
 if (!USE_LOCAL_STORAGE) {
-  localStorage.setItem(ALPHA_AUDIO, null)
+  localStorage.removeItem(ALPHA_AUDIO)
 }
 
-const store = (state) => localStorage.setItem(ALPHA_AUDIO, JSON.stringify(state))
-const load = () => JSON.parse(localStorage.getItem(ALPHA_AUDIO))
+const store = (state: AudioState) => {
+  localStorage.setItem(ALPHA_AUDIO, JSON.stringify(state))
+}
+
+const load = () => {
+  JSON.parse(localStorage.getItem(ALPHA_AUDIO) || '')
+}
+
 const storedState = USE_LOCAL_STORAGE ? load() : {}
 
 const initialState: AudioState = {

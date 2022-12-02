@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import AudioManager, { AudioFiles, AudioTypes } from 'lib/utils/AudioManager'
 
 import './HomeMenuItem.css'
@@ -17,7 +17,7 @@ export const HomeMenuItem = ({
 
   // Events //
 
-  const handleClick = (event) => {
+  const handleClick = (event: MouseEvent) => {
     event.preventDefault()
     AudioManager.play(AudioFiles.menuChange, AudioTypes.INTERFACE)
     onClick()

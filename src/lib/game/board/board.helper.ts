@@ -53,9 +53,11 @@ export const placeElement = (
     sourceTile.elements = ArrayUtils.removeElement(sourceTile.elements, elementId)
   }
   const targetTile = getTileByPosition(game, position)
-  targetTile.elements = targetTile.elements.concat([element.id])
-  element.x = position.x
-  element.y = position.y
+  if (targetTile) {
+    targetTile.elements = targetTile.elements.concat([element.id])
+    element.x = position.x
+    element.y = position.y
+  }
   if (!game.board.elements.includes(elementId)) {
     game.board.elements.push(elementId)
   }
@@ -70,7 +72,7 @@ export const moveElement = (
     placeElement(game, elementId, to)
     const element = getElement(game, elementId)
     const tile = getTileByPosition(game, element)
-    if (tile.terrain === '<') {
+    if (tile?.terrain === '<') {
       game.status = GameStatuses.GAME_ENDED_VICTORY
     }
   }

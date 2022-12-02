@@ -68,7 +68,7 @@ const Board = ({
 
   // Rendering //
 
-  const renderRow = (tileRow, index) => {
+  const renderRow = (tileRow: string[], index: number) => {
     return (
       <div className='board-tiles-row' key={`row-${index}`}>
         {tileRow.map(renderTile)}
@@ -76,7 +76,7 @@ const Board = ({
     )
   }
 
-  const renderTile = (tileId) => {
+  const renderTile = (tileId: string) => {
     return (
       <BoardTile key={tileId} tileId={tileId} />
     )

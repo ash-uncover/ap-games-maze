@@ -17,8 +17,9 @@ import Root from 'routes/__layout'
 import ShortcutManager from 'lib/utils/ShortcutManager'
 ShortcutManager.reset()
 
-const containerRoot = document.getElementById('reactroot')
+const containerRoot = document.getElementById('reactroot')!
 const root = createRoot(containerRoot)
+
 root.render(
   <Provider store={store}>
     <Root />

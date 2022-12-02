@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import './Hexagon.css'
 
+interface HexagonProperties {
+  children: ReactNode
+}
+
 const Hexagon = ({
   children
-}) => {
+}: HexagonProperties) => {
 
   // Rendering //
 

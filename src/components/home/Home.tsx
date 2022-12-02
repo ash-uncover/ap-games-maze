@@ -1,11 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 // Libs
 import AudioManager, { AudioFiles, AudioTypes } from 'lib/utils/AudioManager'
 import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
 
 import './Home.css'
 
-const Home = ({ children }) => {
+interface HomeProperties {
+  children: ReactNode
+}
+const Home = ({
+  children
+}: HomeProperties) => {
 
   // Hooks //
 

@@ -1,16 +1,28 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 // Libs
 import { UUID } from '@uncover/js-utils'
+
+interface MenuCheckboxProperties {
+  checked: boolean
+  label: string
+  onChange: (arg: boolean) => void
+}
 
 const MenuCheckbox = ({
   checked,
   label,
   onChange,
-}) => {
+}: MenuCheckboxProperties) => {
 
   // Hooks //
 
   const [id] = useState<string>(`menu-checkbox-${UUID.next()}`)
+
+  // Events //
+
+  const handleChange = (event: FormEvent<HTMLInputElement>) => {
+    onChange(event.currentTarget.checked)
+  }
 
   // Rendering //
 
@@ -21,7 +33,7 @@ const MenuCheckbox = ({
         type='checkbox'
         name={label}
         checked={checked}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <label
         htmlFor={id}

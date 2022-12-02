@@ -5,7 +5,7 @@ import { GamePlayer } from 'lib/game/players/player.model'
 export interface GameState {
   status: GameStatus
 
-  board: GameBoardState | null
+  board: GameBoardState
 
   tiles: GameBoardTilesState
   elements: GameBoardElementsState

@@ -9,7 +9,6 @@ import HomeSettingsGeneral from './HomeSettingsGeneral'
 import HomeSettingsVideo from './HomeSettingsVideo'
 import HomeSettingsAudio from './HomeSettingsAudio'
 
-
 const HomeSettings = () => {
 
   // Hooks //

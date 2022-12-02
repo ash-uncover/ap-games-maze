@@ -4,9 +4,13 @@ import GameSelectors from 'store/game/game.selectors'
 
 import Tile from './tile/Tile'
 
+interface BoardTileProperties {
+  tileId: string
+}
+
 const BoardTile = ({
   tileId
-}) => {
+}: BoardTileProperties) => {
 
   // Hooks //
 

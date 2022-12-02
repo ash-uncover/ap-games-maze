@@ -24,31 +24,31 @@ const HomeSettingsAudio = () => {
 
   // Events //
 
-  const handleMasterChange = (event) => {
-    dispatch(AudioSlice.actions.setMaster(event.target.checked))
+  const handleMasterChange = (value: boolean) => {
+    dispatch(AudioSlice.actions.setMaster(value))
   }
-  const handleMasterVolumeChange = (value) => {
+  const handleMasterVolumeChange = (value: number) => {
     dispatch(AudioSlice.actions.setMasterVolume(value))
   }
 
-  const handleGameChange = (event) => {
-    dispatch(AudioSlice.actions.setGame(event.target.checked))
+  const handleGameChange = (value: boolean) => {
+    dispatch(AudioSlice.actions.setGame(value))
   }
-  const handleGameVolumeChange = (value) => {
+  const handleGameVolumeChange = (value: number) => {
     dispatch(AudioSlice.actions.setGameVolume(value))
   }
 
-  const handleInterfaceChange = (event) => {
-    dispatch(AudioSlice.actions.setInterface(event.target.checked))
+  const handleInterfaceChange = (value: boolean) => {
+    dispatch(AudioSlice.actions.setInterface(value))
   }
-  const handleInterfaceVolumeChange = (value) => {
+  const handleInterfaceVolumeChange = (value: number) => {
     dispatch(AudioSlice.actions.setInterfaceVolume(value))
   }
 
-  const handleMusicChange = (event) => {
-    dispatch(AudioSlice.actions.setMusic(event.target.checked))
+  const handleMusicChange = (value: boolean) => {
+    dispatch(AudioSlice.actions.setMusic(value))
   }
-  const handleMusicVolumeChange = (value) => {
+  const handleMusicVolumeChange = (value: number) => {
     dispatch(AudioSlice.actions.setMusicVolume(value))
   }
 

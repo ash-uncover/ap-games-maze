@@ -2,13 +2,17 @@ import React, { useEffect, useRef } from 'react'
 
 import './Element.css'
 
+interface ElementProperties {
+  elementId: string
+}
+
 const Element = ({
-  id,
-}) => {
+  elementId,
+}: ElementProperties) => {
 
   // Hooks //
 
-  const element = useRef(null)
+  const element = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (element && element.current) {

@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react'
+import React, { ReactNode } from 'react'
 
 import './HomeContent.css'
 
 interface HomeContentProperties {
-  children: ReactElement | ReactElement[]
+  children: ReactNode
 }
 const HomeContent = ({
   children,

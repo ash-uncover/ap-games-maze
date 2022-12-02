@@ -1,0 +1,28 @@
+{
+  "terrains": [
+    {
+      "id": "W",
+      "name": "wall",
+      "color": "#222",
+      "accessible": false
+    },
+    {
+      "id": "F",
+      "name": "floor",
+      "color": "#AAA",
+      "accessible": true
+    },
+    {
+      "id": "<",
+      "name": "exit",
+      "color": "#FFF",
+      "accessible": true
+    },
+    {
+      "id": ">",
+      "name": "entry",
+      "color": "#888",
+      "accessible": true
+    }
+  ]
+}

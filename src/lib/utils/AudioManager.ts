@@ -24,8 +24,8 @@ export const normalizeVolumeValue = (value: number) => {
 
 class AudioManager {
 
-  #audios = {}
-  #playing = []
+  #audios: { [key: string]: HTMLAudioElement } = {}
+  #playing:{ path: string, type: string }[] = []
 
   #master = true
   #masterVolume = 100

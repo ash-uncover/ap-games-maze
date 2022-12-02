@@ -9,11 +9,6 @@ import './Tile.css'
 
 const Tile = (tile: GameBoardTile) => {
 
-  if (!Terrains[tile.terrain]) {
-    console.log(Terrains)
-    console.log(tile.terrain)
-  }
-
   // Rendering //
 
   return (
@@ -26,7 +21,7 @@ const Tile = (tile: GameBoardTile) => {
         background: Terrains[tile.terrain].color
       }}
     >
-      {tile.elements.map(element => <Element key={element} id={element} />)}
+      {tile.elements.map(element => <Element key={element} elementId={element} />)}
     </div>
   )
 }
