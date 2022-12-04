@@ -41,10 +41,7 @@ const Board = ({
           { down: true, code: 'ArrowRight', callback: handleMoveRight },
         ]
       }
-      ShortcutManager.addShortcuts(shortcuts)
-    }
-    return () => {
-      ShortcutManager.removeShortcuts('board-shortcuts')
+      return ShortcutManager.addShortcuts(shortcuts)
     }
   }, [status])
 
