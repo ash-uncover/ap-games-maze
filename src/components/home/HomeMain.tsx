@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 // Libs
-import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
+import { ShortcutManager, Shortcuts } from '@uncover/games-common'
 // Components
 import HomeMenu from './HomeMenu'
 
@@ -42,7 +42,7 @@ const HomeMain = () => {
 
   return (
     <HomeMenu
-      title='AP World'
+      title='AP Maze'
       items={[
         { text: 'New', onClick: handleNew },
         { text: 'Settings', onClick: handleSettings },

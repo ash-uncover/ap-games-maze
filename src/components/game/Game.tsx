@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 // Store
 import GameSelectors from 'store/game/game.selectors'
+import GameSlice from 'store/game/game.slice'
 import { GameStatuses } from 'store/game/game.state'
 // Libs
-import AudioManager, { AudioFiles, AudioTypes } from 'lib/utils/AudioManager'
+import { AudioTypes } from '@uncover/games-common'
+import Audio, { AudioFiles } from 'lib/utils/Audio'
 // Components
 import Board from 'components/game/board/Board'
 
 import './Game.css'
-import GameSlice from 'store/game/game.slice'
 
 const Game = ({ }) => {
 
@@ -21,10 +22,10 @@ const Game = ({ }) => {
   const status = useSelector(GameSelectors.status)
 
   useEffect(() => {
-    AudioManager.play(AudioFiles.game, AudioTypes.MUSIC)
-    return () => {
-      AudioManager.stop(AudioFiles.game)
-    }
+    return Audio.play(
+      AudioFiles.game,
+      AudioTypes.MUSIC
+    )
   }, [])
 
   // Events //

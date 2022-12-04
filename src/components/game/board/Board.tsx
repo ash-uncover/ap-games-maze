@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Libs
-import AudioManager, { AudioFiles, AudioTypes } from 'lib/utils/AudioManager'
-import ShortcutManager, { Shortcuts } from 'lib/utils/ShortcutManager'
+import Audio, { AudioFiles } from 'lib/utils/Audio'
+import { AudioTypes } from '@uncover/games-common'
+import { ShortcutManager, Shortcuts } from '@uncover/games-common'
 // Components
 import BoardTile from 'components/game/board/BoardTile'
 
@@ -50,19 +51,19 @@ const Board = ({
   // Events //
 
   const handleMoveUp = () => {
-    AudioManager.play(AudioFiles.step, AudioTypes.GAME)
+    Audio.play(AudioFiles.step, AudioTypes.GAME)
     dispatch(GameSlice.actions.moveUp({ elementId: elements[0] }))
   }
   const handleMoveLeft = () => {
-    AudioManager.play(AudioFiles.step, AudioTypes.GAME)
+    Audio.play(AudioFiles.step, AudioTypes.GAME)
     dispatch(GameSlice.actions.moveLeft({ elementId: elements[0] }))
   }
   const handleMoveDown = () => {
-    AudioManager.play(AudioFiles.step, AudioTypes.GAME)
+    Audio.play(AudioFiles.step, AudioTypes.GAME)
     dispatch(GameSlice.actions.moveDown({ elementId: elements[0] }))
   }
   const handleMoveRight = () => {
-    AudioManager.play(AudioFiles.step, AudioTypes.GAME)
+    Audio.play(AudioFiles.step, AudioTypes.GAME)
     dispatch(GameSlice.actions.moveRight({ elementId: elements[0] }))
   }
 

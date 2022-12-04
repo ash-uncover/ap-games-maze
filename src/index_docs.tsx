@@ -18,7 +18,7 @@ import store from 'store'
 // Import components
 import Root from 'routes/__layout'
 
-import ShortcutManager from 'lib/utils/ShortcutManager'
+import { ShortcutManager } from '@uncover/games-common'
 ShortcutManager.reset()
 
 const containerRoot = document.getElementById('reactroot')!
