@@ -8,7 +8,7 @@ import { Terrain, TerrainsData } from './terrain.helper'
 export const Maps: { [key: string]: Map } = {}
 export const Terrains: { [key: string]: Terrain } = {}
 
-const Data = new DataManager(`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/data/`)
+const Data = new DataManager(`${CONFIG.AP_GAMES_MAZE_PUBLIC}/data/`)
 
 export const loadMapsData = async () => {
   const maps = await Data.load<MapsData>('maps.json')
