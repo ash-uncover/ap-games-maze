@@ -1,29 +1,17 @@
+import { DataManager } from '@uncover/games-common'
+
 import CONFIG from 'config'
-import {
-  Maps,
-  Terrains,
-} from './Data'
-import { Map } from './MapHelper'
-import { Terrain } from './terrain.helper'
 
-const load = async (url: string) => {
-  const headers = new Headers()
+import { Map, MapsData } from './map.helper'
+import { Terrain, TerrainsData } from './terrain.helper'
 
-  const request = {
-    method: 'GET',
-    headers
-  }
+export const Maps: { [key: string]: Map } = {}
+export const Terrains: { [key: string]: Terrain } = {}
 
-  const response = await fetch(
-    url,
-    request
-  )
-
-  return await response.json()
-}
+const Data = new DataManager(`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/data/`)
 
 export const loadMapsData = async () => {
-  const maps = await load(`${CONFIG.AP_GAMES_MAZE_PUBLIC}/data/maps.json`)
+  const maps = await Data.load<MapsData>('maps.json')
   maps.maps.forEach((map: Map) => {
     // Check map
     const height = map.terrains.length
@@ -42,7 +30,7 @@ export const loadMapsData = async () => {
 }
 
 export const loadTerrainsData = async () => {
-  const terrains = await load(`${CONFIG.AP_GAMES_MAZE_PUBLIC}/data/terrains.json`)
+  const terrains = await Data.load<TerrainsData>('terrains.json')
   terrains.terrains.forEach((terrain: Terrain) => {
     Terrains[terrain.id] = terrain
   })

@@ -1,3 +1,7 @@
+export interface MapsData {
+  maps: Map[]
+}
+
 export interface Map {
   id: string
   description: string

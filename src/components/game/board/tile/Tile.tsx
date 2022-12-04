@@ -1,6 +1,6 @@
 import React from 'react'
 // Libs
-import { Terrains } from 'lib/data/Data'
+import { Terrains } from 'lib/data'
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 // Components
 import Element from '../element/Element'

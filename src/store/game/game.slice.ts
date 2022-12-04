@@ -9,8 +9,8 @@ import * as ElementHelper from 'lib/game/board/elements/element.helper'
 import * as TileHelper from 'lib/game/board/tiles/tile.helper'
 import * as PlayerHelper from 'lib/game/players/player.helper'
 
-import { Maps, Terrains } from 'lib/data/Data'
-import { shuffleMap } from 'lib/data/MapHelper'
+import { Maps, Terrains } from 'lib/data'
+import { shuffleMap } from 'lib/data/map.helper'
 
 import {
   GameState,

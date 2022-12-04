@@ -1,6 +1,6 @@
 import { ArrayUtils } from '@uncover/js-utils'
 import { GameState, GameStatuses } from 'store/game/game.state'
-import { Terrains } from '../../data/Data'
+import { Terrains } from '../../data'
 
 export const getElement = (
   game: GameState,
