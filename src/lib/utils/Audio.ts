@@ -8,6 +8,6 @@ export const AudioFiles = {
   step: 'step.mp3',
 }
 
-export const Audio = new AudioManager(`${CONFIG.AP_GAMES_MEMORY_PUBLIC}/sound/`)
+export const Audio = new AudioManager(`${CONFIG.AP_GAMES_MAZE_PUBLIC}/sound/`)
 
 export default Audio
