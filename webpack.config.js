@@ -26,6 +26,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: './public/favicon.png',
       template: './src/index.html',
       title: 'AP Maze',
     }),
@@ -44,7 +45,7 @@ module.exports = {
       directory: path.join(__dirname, 'public'),
     },
     compress: true,
-    port: 8080,
+    port: 8081,
     historyApiFallback: true,
   },
 
