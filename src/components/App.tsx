@@ -7,7 +7,7 @@ import AppSlice from 'store/app/app.slice'
 // Libs
 import { loadData } from 'lib/data'
 // Services
-import MessageService from 'services/message.service'
+import MessageServiceCentral from 'services/message.service'
 
 interface AppProperties {
   children: ReactElement
@@ -27,7 +27,7 @@ const App = ({
     const embedded = query.has('embedded')
     if (embedded) {
       dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
-      return MessageService.init(dispatch)
+      return MessageServiceCentral.init(dispatch)
     }
   }, [])
 

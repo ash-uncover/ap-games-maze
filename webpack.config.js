@@ -39,7 +39,7 @@ module.exports = {
       ],
     }),
   ],
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   devServer: {
     client: {
       progress: false,

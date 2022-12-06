@@ -8,7 +8,7 @@ import HomeMenu from './HomeMenu'
 import './Home.css'
 import { useSelector } from 'react-redux'
 import AppSelectors from 'store/app/app.selectors'
-import MessageService from 'services/message.service'
+import MessageServiceCentral from 'services/message.service'
 
 const HomeMain = () => {
 
@@ -42,7 +42,7 @@ const HomeMain = () => {
   }
 
   const handleExit = () => {
-    MessageService.sendMessage({
+    MessageServiceCentral.sendMessage({
       type: 'exitGame',
       payload: null
     })
