@@ -18,6 +18,9 @@ const App = ({
 
   // Hooks //
 
+  const location = useLocation()
+  console.log(location)
+
   const dispatch = useDispatch()
   const query = useQuery()
   const loaded = useSelector(AppSelectors.loaded)
@@ -49,8 +52,6 @@ const App = ({
 }
 
 const useQuery = () => {
-  const location = useLocation()
-  console.log(location)
   const { search } = useLocation()
   return React.useMemo(() => new URLSearchParams(search), [search])
 }
