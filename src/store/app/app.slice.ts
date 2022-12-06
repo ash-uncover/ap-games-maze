@@ -17,6 +17,8 @@ const initialState: AppState = {
   dialog: null,
   dialogParams: null,
 
+  embedded: false,
+
   language: Language.DEFAULT.id,
 
   loaded: false,
@@ -29,8 +31,8 @@ const startApp: CaseReducer<AppState, PayloadAction<PayloadBusy>> = (state, acti
   state.started = true
 }
 
-type PayloadBusy = {
-  busy: boolean,
+interface PayloadBusy {
+  busy: boolean
   busyMessage?: string
 }
 const setBusy: CaseReducer<AppState, PayloadAction<PayloadBusy>> = (state, action) => {
@@ -42,6 +44,16 @@ const setBusy: CaseReducer<AppState, PayloadAction<PayloadBusy>> = (state, actio
   state.busyMessage = busy ? busyMessage || '' : ''
 }
 
+interface PayloadEmbedded {
+  embedded: boolean
+}
+const setEmbedded: CaseReducer<AppState, PayloadAction<PayloadEmbedded>> = (state, action) => {
+  const {
+    embedded
+  } = action.payload
+  state.embedded = embedded
+}
+
 const setLanguage: CaseReducer<AppState, PayloadAction<string>> = (state, action) => {
   state.language = action.payload
 }
@@ -50,9 +62,9 @@ const setLoaded: CaseReducer<AppState, PayloadAction<boolean>> = (state, action)
   state.loaded = action.payload
 }
 
-type PayloadDialog = {
-  dialog: string | null,
-  params?: any,
+interface PayloadDialog {
+  dialog: string | null
+  params?: any
 }
 const openDialog: CaseReducer<AppState, PayloadAction<PayloadDialog>> = (state, action) => {
   const {
@@ -77,6 +89,7 @@ const AppSlice = createSlice({
     startApp,
     setBusy,
     setLanguage,
+    setEmbedded,
     setLoaded,
     openDialog,
     closeDialog,

@@ -6,12 +6,17 @@ import { ShortcutManager, Shortcuts } from '@uncover/games-common'
 import HomeMenu from './HomeMenu'
 
 import './Home.css'
+import { useSelector } from 'react-redux'
+import AppSelectors from 'store/app/app.selectors'
+import MessageService from 'services/message.service'
 
 const HomeMain = () => {
 
   // Hooks //
 
   const navigate = useNavigate()
+
+  const embedded = useSelector(AppSelectors.embedded)
 
   useEffect(() => {
     const shortcuts: Shortcuts = {
@@ -20,6 +25,7 @@ const HomeMain = () => {
       shortcuts: [
         { code: 'KeyN', callback: handleNew },
         { code: 'KeyS', callback: handleSettings },
+        { code: 'KeyE', callback: handleExit },
       ]
     }
     return ShortcutManager.addShortcuts(shortcuts)
@@ -35,15 +41,27 @@ const HomeMain = () => {
     navigate('settings')
   }
 
+  const handleExit = () => {
+    MessageService.sendMessage({
+      type: 'exitGame',
+      payload: null
+    })
+  }
+
   // Rendering //
+
+  const items = [
+    { text: 'New', onClick: handleNew },
+    { text: 'Settings', onClick: handleSettings },
+  ]
+  if (embedded) {
+    items.push({ text: 'Exit', onClick: handleExit },)
+  }
 
   return (
     <HomeMenu
       title='AP Maze'
-      items={[
-        { text: 'New', onClick: handleNew },
-        { text: 'Settings', onClick: handleSettings },
-      ]}
+      items={items}
     />
   )
 }
