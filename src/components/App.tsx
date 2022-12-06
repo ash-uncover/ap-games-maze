@@ -49,6 +49,8 @@ const App = ({
 }
 
 const useQuery = () => {
+  const location = useLocation()
+  console.log(location)
   const { search } = useLocation()
   return React.useMemo(() => new URLSearchParams(search), [search])
 }
