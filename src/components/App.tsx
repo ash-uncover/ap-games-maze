@@ -1,11 +1,12 @@
 import React, { useEffect, ReactElement } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 // Store
 import AppSelectors from 'store/app/app.selectors'
 import AppSlice from 'store/app/app.slice'
 // Libs
 import { loadData } from 'lib/data'
-import { useLocation } from 'react-router-dom'
+// Services
 import MessageService from 'services/message.service'
 
 interface AppProperties {
@@ -17,9 +18,6 @@ const App = ({
 }: AppProperties) => {
 
   // Hooks //
-
-  const location = useLocation()
-  console.log(location)
 
   const dispatch = useDispatch()
   const query = useQuery()
