@@ -1,7 +1,7 @@
 {
   "id": "maze",
-  "name": "AP Maze",
+  "name": "Maze",
   "description": "A maze game",
-  "icon": "",
-  "thumbnail": ""
+  "icon": "/favicon.png",
+  "thumbnail": "/thumbnail.jpg"
 }
