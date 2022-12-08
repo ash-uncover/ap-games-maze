@@ -1,6 +1,7 @@
 {
   "id": "maze",
   "name": "Maze",
+  "url": "https://ash-uncover.github.io/ap-games-maze",
   "description": "A maze game",
   "icon": "/favicon.png",
   "thumbnail": "/thumbnail.jpg"

@@ -1,6 +1,7 @@
 {
   "id": "maze",
   "name": "Maze",
+  "url": "",
   "description": "A maze game",
   "icon": "/favicon.png",
   "thumbnail": "/thumbnail.jpg"
