@@ -4,5 +4,11 @@
   "url": "https://ash-uncover.github.io/ap-games-maze",
   "description": "A maze game",
   "icon": "/favicon.png",
-  "thumbnail": "/thumbnail.jpg"
+  "thumbnail": "/thumbnail.jpg",
+  "consumes": {
+    "audio": {}
+  },
+  "provides": {
+    "audio": {}
+  }
 }

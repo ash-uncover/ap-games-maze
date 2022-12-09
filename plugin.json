@@ -4,5 +4,11 @@
   "url": "",
   "description": "A maze game",
   "icon": "/favicon.png",
-  "thumbnail": "/thumbnail.jpg"
+  "thumbnail": "/thumbnail.jpg",
+  "consumes": {
+    "audio": {}
+  },
+  "provides": {
+    "audio": {}
+  }
 }
