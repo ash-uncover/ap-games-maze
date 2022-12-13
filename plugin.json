@@ -1,14 +1,15 @@
 {
-  "id": "maze",
-  "name": "Maze",
-  "url": "",
-  "description": "A maze game",
-  "icon": "/favicon.png",
-  "thumbnail": "/thumbnail.jpg",
-  "consumes": {
-    "audio": {}
-  },
+  "name": "maze",
+  "url": "http://localhost:8081",
   "provides": {
-    "audio": {}
+    "game": {
+      "url": "",
+      "type": "iframe",
+      "properties": {
+        "name": "Maze",
+        "description": "A maze game",
+        "thumbnail": "/thumbnail.jpg"
+      }
+    }
   }
 }

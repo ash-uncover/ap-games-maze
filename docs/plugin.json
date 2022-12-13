@@ -1,14 +1,15 @@
 {
-  "id": "maze",
-  "name": "Maze",
+  "name": "maze",
   "url": "https://ash-uncover.github.io/ap-games-maze",
-  "description": "A maze game",
-  "icon": "/favicon.png",
-  "thumbnail": "/thumbnail.jpg",
-  "consumes": {
-    "audio": {}
-  },
   "provides": {
-    "audio": {}
+    "game": {
+      "url": "",
+      "type": "iframe",
+      "properties": {
+        "name": "Maze",
+        "description": "A maze game",
+        "thumbnail": "/thumbnail.jpg"
+      }
+    }
   }
 }

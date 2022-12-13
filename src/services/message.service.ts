@@ -1,7 +1,7 @@
 import { AnyAction } from '@reduxjs/toolkit'
-import MessageDispatcher, { Message, MessageService } from '@uncover/js-utils-microfrontend'
 import { Dispatch } from 'react'
 import { useDispatch } from 'react-redux'
+import MessageDispatcher, { Message, MessageService } from '@uncover/js-utils-microfrontend'
 
 MessageDispatcher.start()
 const MessageServiceCentral = new MessageService()

@@ -2,13 +2,20 @@ import Logger from '@uncover/js-utils-logger'
 const LOGGER = new Logger('CONFIG')
 
 // Default hard-coded values
-const CONFIG: { [key: string]: string } = {
-  AP_GAMES_MAZE_PUBLIC: ''
+const CONFIG: {
+  AP_GAMES_MAZE_PLUGIN: string
+  AP_GAMES_MAZE_PUBLIC: string
+} = {
+  AP_GAMES_MAZE_PLUGIN: 'http://localhost:8081',
+  AP_GAMES_MAZE_PUBLIC: '',
 }
 
 // Load config from env
 try {
   // This cannot be factorized since webpack simply replace the full process.env.[property] strings
+  if (process.env.AP_GAMES_MAZE_PLUGIN) {
+    CONFIG.AP_GAMES_MAZE_PLUGIN = process.env.AP_GAMES_MAZE_PLUGIN
+  }
   if (process.env.AP_GAMES_MAZE_PUBLIC) {
     CONFIG.AP_GAMES_MAZE_PUBLIC = process.env.AP_GAMES_MAZE_PUBLIC
   }
@@ -18,6 +25,7 @@ try {
 
 console.log('CONFIG')
 Object.keys(CONFIG).forEach((confKey) => {
+  // @ts-ignore
   console.log(` - ${confKey}: '${CONFIG[confKey]}'`)
 })
 

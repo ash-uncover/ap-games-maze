@@ -40,7 +40,8 @@ module.exports = {
       ],
     }),
     new webpack.EnvironmentPlugin({
-      AP_GAMES_MAZE_PUBLIC: '/ap-games-maze'
+      AP_GAMES_MAZE_PLUGIN: 'https://ash-uncover.github.io/ap-games-maze/plugin.json',
+      AP_GAMES_MAZE_PUBLIC: '/ap-games-maze',
     }),
     new HtmlWebpackPlugin({
       template: './src/index_docs.html',
