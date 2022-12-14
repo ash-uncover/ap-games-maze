@@ -4,8 +4,10 @@ import { createRoot } from 'react-dom/client'
 import {
   Provider
 } from 'react-redux'
+
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
+  HashRouter,
 } from 'react-router-dom'
 
 // Import translation module
@@ -18,7 +20,13 @@ import store from 'store'
 import Root from 'routes/__layout'
 
 import { ShortcutManager } from '@uncover/games-common'
+import CONFIG from 'config'
 ShortcutManager.reset()
+
+let Router = BrowserRouter
+if (CONFIG.AP_GAMES_MAZE_ENVIRONMENT === 'github') {
+  Router = HashRouter
+}
 
 const containerRoot = document.getElementById('reactroot')!
 const root = createRoot(containerRoot)

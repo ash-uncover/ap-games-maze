@@ -5,9 +5,11 @@ const LOGGER = new Logger('CONFIG')
 const CONFIG: {
   AP_GAMES_MAZE_PLUGIN: string
   AP_GAMES_MAZE_PUBLIC: string
+  AP_GAMES_MAZE_ENVIRONMENT: string
 } = {
   AP_GAMES_MAZE_PLUGIN: 'http://localhost:8081',
   AP_GAMES_MAZE_PUBLIC: '',
+  AP_GAMES_MAZE_ENVIRONMENT: 'local',
 }
 
 // Load config from env
@@ -18,6 +20,9 @@ try {
   }
   if (process.env.AP_GAMES_MAZE_PUBLIC) {
     CONFIG.AP_GAMES_MAZE_PUBLIC = process.env.AP_GAMES_MAZE_PUBLIC
+  }
+  if (process.env.AP_GAMES_MAZE_ENVIRONMENT) {
+    CONFIG.AP_GAMES_MAZE_ENVIRONMENT = process.env.AP_GAMES_MAZE_ENVIRONMENT
   }
 } catch (error) {
   LOGGER.warn('Failed to load from process.env')
