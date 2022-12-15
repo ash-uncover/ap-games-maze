@@ -21,12 +21,10 @@ body,
   width: 100%;
 }
 .main-layer-background {
-  background: url('/images/background.jpg');
+  background: url('images/background.jpg');
   background-size: cover;
 }
-.main-layer-opacity {
-  background: rgba(30,30,30,0.7);
-}
+
 .main-layer-copyright {
   position: absolute;
   bottom: 0;
