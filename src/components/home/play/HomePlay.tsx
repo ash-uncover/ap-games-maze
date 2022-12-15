@@ -6,9 +6,8 @@ import GameSlice from 'store/game/game.slice'
 // Libs
 import { ShortcutManager, Shortcuts } from '@uncover/games-common'
 // Components
-import HomeMenu from '../HomeMenu'
 
-const HomeNew = () => {
+const HomePlay = () => {
 
   // Hooks //
 
@@ -46,14 +45,13 @@ const HomeNew = () => {
   // Rendering //
 
   return (
-    <HomeMenu
+    <button
       title='New Game'
-      items={[
-        { text: 'Start', onClick: handleStart },
-        { text: 'Back', onClick: handleBack },
-      ]}
-    />
+      onClick={handleStart}
+    >
+      Start
+    </button>
   )
 }
 
-export default HomeNew
+export default HomePlay

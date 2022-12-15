@@ -7,6 +7,7 @@ const { merge } = require('webpack-merge')
 const base = require('./webpack.config.base.js')
 
 const DIR_DOCS = path.resolve(__dirname, 'docs')
+const DIR_PUBLIC = path.resolve(__dirname, 'public')
 
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -39,6 +40,9 @@ module.exports = merge(base, {
         from: path.resolve(__dirname, 'plugin.json'),
         to: '.',
         transform: transformPlugin
+      }, {
+        from: DIR_PUBLIC,
+        to: '.',
       }],
     }),
     new webpack.EnvironmentPlugin({

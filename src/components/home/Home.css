@@ -1,9 +1,0 @@
-:root {
-  --home-menu-width: 10rem;
-  --text-color: lightgrey;
-  --text-hightlight-color: white;
-}
-
-.home {
-  color: var(--text-color);
-}

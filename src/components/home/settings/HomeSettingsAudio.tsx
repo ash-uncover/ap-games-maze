@@ -5,8 +5,7 @@ import { useDispatchMessage } from 'services/message.service'
 import AudioSlice from 'store/audio/audio.slice'
 import AudioSelectors from 'store/audio/audio.selectors'
 // Components
-import { MenuStepInput } from 'components/commons/menu/MenuStepInput'
-import MenuCheckbox from 'components/commons/menu/MenuCheckbox'
+import { MenuCheckbox, MenuStepInput } from '@uncover/games-common'
 
 const HomeSettingsAudio = () => {
 

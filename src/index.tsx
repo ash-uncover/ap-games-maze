@@ -12,6 +12,8 @@ import {
 
 // Import translation module
 import 'lib/utils/i18n'
+// Import icons
+import 'lib/utils/icons'
 
 // Should be imported before first access to the reducers
 import store from 'store'
