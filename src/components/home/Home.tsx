@@ -16,7 +16,7 @@ import HomePlay from './play/HomePlay'
 import { HomeExit } from './exit/HomeExit'
 
 const HOME_PAGE: { [key: string]: any } = {}
-HOME_PAGE.LIBRARY = {
+HOME_PAGE.PLAY = {
   id: 'play',
   icon: <FontAwesomeIcon icon={['fas', 'gamepad']} />,
   title: 'Play',
@@ -93,7 +93,7 @@ const Home = ({
   // Rendering //
 
   const pages = [
-    HOME_PAGE.LIBRARY,
+    HOME_PAGE.PLAY,
     HOME_PAGE.SETTINGS,
     HOME_PAGE.CREDITS
   ]
