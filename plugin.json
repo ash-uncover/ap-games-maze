@@ -3,6 +3,7 @@
   "url": "http://localhost:8081",
   "provides": {
     "ap-games/game": {
+      "name": "maze",
       "attributes": {
         "name": "Maze",
         "description": "A maze game",

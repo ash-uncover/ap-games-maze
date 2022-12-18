@@ -3,6 +3,7 @@
   "url": "https://ash-uncover.github.io/ap-games-maze",
   "provides": {
     "ap-games/game": {
+      "name": "maze",
       "attributes": {
         "name": "Maze",
         "description": "A maze game",
