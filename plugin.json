@@ -7,7 +7,7 @@
       "attributes": {
         "name": "Maze",
         "description": "A maze game",
-        "thumbnail": "/thumbnail.jpg"
+        "thumbnail": "/images/thumbnail.jpg"
       },
       "elements": {
         "main": {
