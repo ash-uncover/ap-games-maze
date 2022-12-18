@@ -2,13 +2,17 @@
   "name": "maze",
   "url": "https://ash-uncover.github.io/ap-games-maze",
   "provides": {
-    "game": {
-      "url": "#",
-      "type": "iframe",
-      "properties": {
+    "ap-games/game": {
+      "attributes": {
         "name": "Maze",
         "description": "A maze game",
         "thumbnail": "/thumbnail.jpg"
+      },
+      "elements": {
+        "main": {
+          "url": "#",
+          "type": "iframe"
+        }
       }
     }
   }
