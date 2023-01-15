@@ -8,6 +8,7 @@ import AppSlice from 'store/app/app.slice'
 import { loadData } from 'lib/data'
 // Services
 import MessageServiceCentral from 'services/message.service'
+import { useTranslation } from 'react-i18next'
 
 interface AppProperties {
   children: ReactElement
@@ -20,8 +21,17 @@ const App = ({
   // Hooks //
 
   const dispatch = useDispatch()
+
+  const { t, i18n } = useTranslation()
+
   const query = useQuery()
   const loaded = useSelector(AppSelectors.loaded)
+
+  const language = useSelector(AppSelectors.language)
+
+  useEffect(() => {
+    i18n.changeLanguage(language)
+  }, [language])
 
   useEffect(() => {
     const embedded = query.has('embedded')

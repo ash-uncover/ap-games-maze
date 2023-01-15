@@ -23,7 +23,7 @@ const Root = () => {
         <Route path='/' element={<RouteRoot />}>
           <Route path='' element={<RouteHome />} />
           <Route path='game' element={<RouteGame />} />
-          <Route path='*' element={<RouteNotFound />} />
+          <Route path='*' element={<RouteHome />} />
         </Route>
       </Routes>
       <Audio />

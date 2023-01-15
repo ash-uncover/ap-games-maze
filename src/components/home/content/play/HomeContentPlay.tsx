@@ -4,15 +4,17 @@ import { useDispatch } from 'react-redux'
 // Store
 import GameSlice from 'store/game/game.slice'
 // Libs
-import { ShortcutManager, Shortcuts } from '@uncover/games-common'
+import { Panel, PanelButton, ShortcutManager, Shortcuts } from '@uncover/games-common'
+import { useTranslation } from 'react-i18next'
 // Components
 
-const HomePlay = () => {
+export const HomeContentPlay = () => {
 
   // Hooks //
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const [map, setMap] = useState('medium')
 
@@ -45,13 +47,24 @@ const HomePlay = () => {
   // Rendering //
 
   return (
-    <button
-      title='New Game'
-      onClick={handleStart}
-    >
-      Start
-    </button>
+    <div className='home-play'>
+
+      <div className='home-play__scroll-area'>
+        <Panel>
+          <h2>
+            {t('home.play.title')}
+          </h2>
+        </Panel>
+
+      </div>
+
+      <PanelButton
+        className='home-play__main-action'
+        title={t('home.play.start.tooltip')}
+        onClick={handleStart}
+      >
+        {t('home.play.start.text')}
+      </PanelButton>
+    </div>
   )
 }
-
-export default HomePlay
