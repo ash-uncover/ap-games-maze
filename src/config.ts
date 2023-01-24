@@ -7,7 +7,7 @@ const CONFIG: {
   AP_GAMES_MAZE_PUBLIC: string
   AP_GAMES_MAZE_ENVIRONMENT: string
 } = {
-  AP_GAMES_MAZE_PLUGIN: 'http://localhost:8081',
+  AP_GAMES_MAZE_PLUGIN: 'http://localhost:8081/plugin.json',
   AP_GAMES_MAZE_PUBLIC: '',
   AP_GAMES_MAZE_ENVIRONMENT: 'local',
 }
