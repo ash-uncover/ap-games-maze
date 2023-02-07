@@ -7,8 +7,8 @@ import AppSlice from 'store/app/app.slice'
 // Libs
 import { loadData } from 'lib/data'
 // Services
-import MessageServiceCentral from 'services/message.service'
 import { useTranslation } from 'react-i18next'
+import { useWardService } from '@uncover/ward-react'
 
 interface AppProperties {
   children: ReactElement
@@ -29,16 +29,14 @@ const App = ({
 
   const language = useSelector(AppSelectors.language)
 
+  useWardService(dispatch)
+
   useEffect(() => {
     i18n.changeLanguage(language)
   }, [language])
 
   useEffect(() => {
-    const embedded = query.has('embedded')
-    if (embedded) {
-      dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
-      return MessageServiceCentral.init(dispatch)
-    }
+    dispatch(AppSlice.actions.setEmbedded({ embedded: query.has('embedded') }))
   }, [])
 
   useEffect(() => {

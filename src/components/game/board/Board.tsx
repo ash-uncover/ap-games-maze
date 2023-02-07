@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import GameSelectors from 'store/game/game.selectors'
 import GameSlice from 'store/game/game.slice'
 // Libs
-import Audio, { AudioFiles } from 'lib/utils/Audio'
-import { AudioTypes } from '@uncover/games-common'
-import { ShortcutManager, Shortcuts } from '@uncover/games-common'
+import { AudioCategories, ShortcutManager, Shortcuts, useAudio } from '@uncover/games-common'
 // Components
 import BoardTile from 'components/game/board/BoardTile'
 
 import './Board.css'
 import { GameStatuses } from 'store/game/game.state'
+import CONFIG from 'config'
 
 const Board = ({
 
@@ -45,22 +44,32 @@ const Board = ({
     }
   }, [status])
 
+  const audioStep = useAudio([
+    `${CONFIG.AP_GAMES_MAZE_PUBLIC}/sound/step.mp3`
+  ], {
+    category: AudioCategories.GAME
+  })
+
   // Events //
 
   const handleMoveUp = () => {
-    Audio.play(AudioFiles.step, AudioTypes.GAME)
+    audioStep.stop()
+    audioStep.play()
     dispatch(GameSlice.actions.moveUp({ elementId: elements[0] }))
   }
   const handleMoveLeft = () => {
-    Audio.play(AudioFiles.step, AudioTypes.GAME)
+    audioStep.stop()
+    audioStep.play()
     dispatch(GameSlice.actions.moveLeft({ elementId: elements[0] }))
   }
   const handleMoveDown = () => {
-    Audio.play(AudioFiles.step, AudioTypes.GAME)
+    audioStep.stop()
+    audioStep.play()
     dispatch(GameSlice.actions.moveDown({ elementId: elements[0] }))
   }
   const handleMoveRight = () => {
-    Audio.play(AudioFiles.step, AudioTypes.GAME)
+    audioStep.stop()
+    audioStep.play()
     dispatch(GameSlice.actions.moveRight({ elementId: elements[0] }))
   }
 

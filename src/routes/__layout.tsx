@@ -11,8 +11,6 @@ import RouteHome from 'routes/home/index'
 import RouteGame from 'routes/game/index'
 import RouteNotFound from 'routes/notfound'
 
-import Audio from 'components/utils/Audio'
-
 const Root = () => {
 
   // Rendering //
@@ -26,7 +24,6 @@ const Root = () => {
           <Route path='*' element={<RouteHome />} />
         </Route>
       </Routes>
-      <Audio />
     </>
   )
 }
