@@ -7,7 +7,17 @@ import Element from '../element/Element'
 
 import './Tile.css'
 
-const Tile = (tile: GameBoardTile) => {
+interface TileProperties extends GameBoardTile {
+  onClick: () => void
+}
+
+const Tile = (tile: TileProperties) => {
+
+  // Events //
+
+  const handleClick = () => {
+    tile.onClick()
+  }
 
   // Rendering //
 
@@ -20,6 +30,7 @@ const Tile = (tile: GameBoardTile) => {
         justifyContent: 'center',
         background: Terrains[tile.terrain].color
       }}
+      onClick={handleClick}
     >
       {tile.elements.map(element => <Element key={element} elementId={element} />)}
     </div>

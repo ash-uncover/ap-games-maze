@@ -2,6 +2,8 @@ import CONFIG from 'config'
 import React, { useEffect, useRef } from 'react'
 
 import './Element.css'
+import { useSelector } from 'react-redux'
+import GameSelectors from 'store/game/game.selectors'
 
 interface ElementProperties {
   elementId: string
@@ -13,11 +15,12 @@ const Element = ({
 
   // Hooks //
 
-  const element = useRef<HTMLDivElement>(null)
+  const elementRef = useRef<HTMLDivElement>(null)
+  const element = useSelector(GameSelectors.element(elementId))
 
   useEffect(() => {
-    if (element && element.current) {
-      element.current.scrollIntoView({ block: 'center', inline: 'center' })
+    if (elementRef && elementRef.current) {
+      elementRef.current.scrollIntoView({ block: 'center', inline: 'center' })
     }
   })
 
@@ -25,13 +28,13 @@ const Element = ({
 
   return (
     <div
-      ref={element}
+      ref={elementRef}
       className='element'
     >
       <img
         width='100%'
         height='100%'
-        src={`${CONFIG.AP_GAMES_MAZE_PUBLIC}/images/char.png`}
+        src={element.src}
         style={{
           objectFit: 'contain'
         }}

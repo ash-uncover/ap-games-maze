@@ -20,6 +20,7 @@ import {
   GameBoardElementsState,
 } from 'store/game/game.state'
 import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
+import CONFIG from 'config'
 
 // STATE //
 
@@ -77,21 +78,25 @@ interface movePayload {
 const moveUp: CaseReducer<GameState, PayloadAction<movePayload>> = (state, action) => {
   const { elementId } = action.payload
   const element = BoardHelper.getElement(state, elementId)
+  element.src = `${CONFIG.AP_GAMES_MAZE_PUBLIC}/images/char-up.png`
   BoardHelper.moveElement(state, elementId, { ...element, y: element.y - 1 })
 }
 const moveLeft: CaseReducer<GameState, PayloadAction<movePayload>> = (state, action) => {
   const { elementId } = action.payload
   const element = BoardHelper.getElement(state, elementId)
+  element.src = `${CONFIG.AP_GAMES_MAZE_PUBLIC}/images/char-left.png`
   BoardHelper.moveElement(state, elementId, { ...element, x: element.x - 1 })
 }
 const moveDown: CaseReducer<GameState, PayloadAction<movePayload>> = (state, action) => {
   const { elementId } = action.payload
   const element = BoardHelper.getElement(state, elementId)
+  element.src = `${CONFIG.AP_GAMES_MAZE_PUBLIC}/images/char-down.png`
   BoardHelper.moveElement(state, elementId, { ...element, y: element.y + 1 })
 }
 const moveRight: CaseReducer<GameState, PayloadAction<movePayload>> = (state, action) => {
   const { elementId } = action.payload
   const element = BoardHelper.getElement(state, elementId)
+  element.src = `${CONFIG.AP_GAMES_MAZE_PUBLIC}/images/char-right.png`
   BoardHelper.moveElement(state, elementId, { ...element, x: element.x + 1 })
 }
 interface moveToPayload extends movePayload {

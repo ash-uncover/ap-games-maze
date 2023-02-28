@@ -11,6 +11,7 @@ import BoardTile from 'components/game/board/BoardTile'
 import './Board.css'
 import { GameStatuses } from 'store/game/game.state'
 import CONFIG from 'config'
+import { GameBoardTile } from 'lib/game/board/tiles/tile.model'
 
 const Board = ({
 
@@ -22,7 +23,9 @@ const Board = ({
 
   const status = useSelector(GameSelectors.status)
   const tiles = useSelector(GameSelectors.boardTiles)
+
   const elements = useSelector(GameSelectors.boardElements)
+  const element = useSelector(GameSelectors.element(elements[0]))
 
   useEffect(() => {
     if (
@@ -51,6 +54,18 @@ const Board = ({
   })
 
   // Events //
+
+  const handleTileClick = (tile: GameBoardTile) => {
+    if (element.x === tile.x && element.y === tile.y - 1) {
+      handleMoveDown()
+    } else if (element.x === tile.x && element.y === tile.y + 1) {
+      handleMoveUp()
+    } else if (element.x === tile.x - 1 && element.y === tile.y) {
+      handleMoveRight()
+    } else if (element.x === tile.x + 1 && element.y === tile.y) {
+      handleMoveLeft()
+    }
+  }
 
   const handleMoveUp = () => {
     audioStep.stop()
@@ -85,7 +100,11 @@ const Board = ({
 
   const renderTile = (tileId: string) => {
     return (
-      <BoardTile key={tileId} tileId={tileId} />
+      <BoardTile
+        key={tileId}
+        tileId={tileId}
+        onClick={handleTileClick}
+      />
     )
   }
 
