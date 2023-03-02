@@ -4,7 +4,7 @@
   "scripts": {
     "build:docs": "webpack --config webpack.config.docs.js  --mode production",
     "postinstall": "npm update @uncover/games-common",
-    "start": "webpack serve --config webpack.config.dev.js --progress --mode development"
+    "start": "webpack serve --config webpack.config.dev.js --progress --mode development --host 0.0.0.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",

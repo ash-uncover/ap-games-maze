@@ -2,7 +2,9 @@
   "LOADING": "Chargement...",
   "BACK": "Retour",
   "CLOSE": "Fermer",
-
+  "app": {
+    "start": "Appuyer pour commencer"
+  },
   "home": {
     "menu": "Accueil",
     "title": "Accueil",
